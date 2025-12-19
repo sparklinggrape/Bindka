@@ -1,0 +1,4098 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дохионы Хэл Тоглоом - Монгол Дохионы Хэл Суралцах</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --green: #58a700;
+      --light-green: #8fe022;
+      --dark-green: #3e7800;
+      --white: #ffffff;
+      --black: #1d1d1d;
+      --gray: #f0f0f0;
+      --dark-gray: #767676;
+      --red: #ff4b4b;
+      --yellow: #ffd900;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--gray);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    
+    .header {
+      background-color: var(--white);
+      height: 70px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      left: 0;
+      right: 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      font-size: 2rem;
+      color: var(--green);
+    }
+
+    .logo-text {
+    font-weight: bold;
+    font-size: 1.8rem;
+    background: linear-gradient(to right, var(--green), var(--light-green)); /* Gradient background */
+    
+    /* Ensure compatibility with WebKit (Chrome, Safari, etc.) */
+    -webkit-background-clip: text;  /* Apply background clip to text */
+    -webkit-text-fill-color: transparent;  /* Make text transparent so the gradient shows */
+    
+    /* Non-WebKit browsers (if needed for Firefox or others, use the following: */
+    background-clip: text;  /* Standard version for other browsers */
+    color: transparent;  /* Make text transparent for gradient effect */
+}
+
+
+    
+    .nav-items {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      color: var(--dark-gray);
+      transition: all 0.3s;
+    }
+
+    .nav-item:hover {
+      color: var(--green);
+      transform: translateY(-2px);
+    }
+
+    .nav-item i {
+      font-size: 1.4rem;
+    }
+
+    .nav-item.active {
+      color: var(--green);
+      transform: translateY(-2px);
+    }
+
+    .nav-item-text {
+      font-size: 0.8rem;
+      margin-top: 3px;
+      font-weight: 500;
+    }
+
+    
+    .main {
+      margin-top: 90px;
+      padding: 25px;
+      min-height: calc(100vh - 150px);
+      position: relative;
+      z-index: 1;
+    }
+
+  
+    .hero {
+      background: linear-gradient(135deg, var(--green), var(--light-green));
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 30px;
+      color: white;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(88, 167, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image {
+      width: 200px;
+      height: 200px;
+      background-color: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .hero-image i {
+      font-size: 6rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-down i {
+      font-size: 2rem;
+    }
+
+    
+    .categories-container {
+      margin-bottom: 40px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      color: var(--black);
+      font-weight: 600;
+    }
+
+    .view-all {
+      color: var(--green);
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    /* Mobile category grid - 3 buttons per row */
+    @media (max-width: 768px) {
+      .categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      
+      .category-card {
+        padding: 15px 10px;
+      }
+      
+      .category-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+      }
+      
+      .category-title {
+        font-size: 0.9rem;
+      }
+      
+      .category-count {
+        font-size: 0.8rem;
+      }
+      
+      .section-title {
+        font-size: 1.3rem;
+      }
+      
+      .section-header {
+        margin-bottom: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+      
+      .category-card {
+        padding: 10px 8px;
+      }
+      
+      .category-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+      
+      .category-title {
+        font-size: 0.8rem;
+      }
+      
+      .category-count {
+        font-size: 0.7rem;
+      }
+    }
+
+    .category-card {
+      background-color: var(--white);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .category-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 12px;
+      background-color: var(--gray);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+    }
+
+    .category-title {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .category-count {
+      color: var(--dark-gray);
+      font-size: 0.8rem;
+    }
+
+    
+    .lessons-container {
+      margin-bottom: 40px;
+    }
+
+    .lessons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .lesson-card {
+      background-color: var(--white);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lesson-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .lesson-image {
+      height: 120px;
+      background-color: var(--light-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: white;
+      overflow: hidden;
+      border-radius: 15px 15px 0 0;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .lesson-image video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px 15px 0 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .lesson-info {
+      padding: 15px;
+      position: relative;
+      z-index: 2;
+      background-color: var(--white);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .lesson-title {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: var(--black);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .lesson-desc {
+      color: var(--dark-gray);
+      margin-bottom: 12px;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      display: block;
+    }
+
+    .lesson-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--dark-gray);
+      font-size: 0.75rem;
+    }
+
+    .lesson-level {
+      background-color: var(--gray);
+      padding: 2px 8px;
+      border-radius: 15px;
+      font-size: 0.65rem;
+    }
+
+    .lesson-card.completed .lesson-image {
+      background-color: var(--green);
+    }
+
+    .completed-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background-color: var(--yellow);
+      color: var(--black);
+      padding: 2px 6px;
+      border-radius: 15px;
+      font-size: 0.65rem;
+      font-weight: bold;
+    }
+
+    
+    .progress-container {
+      background-color: var(--white);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .progress-title {
+      font-size: 1.5rem;
+      color: var(--black);
+    }
+
+    .xp-display {
+      background-color: var(--green);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      background-color: var(--gray);
+      border-radius: 10px;
+      height: 10px;
+      margin-bottom: 15px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(to right, var(--green), var(--light-green));
+      border-radius: 10px;
+      width: 45%;
+    }
+
+    .progress-details {
+      display: flex;
+      justify-content: space-between;
+      color: var(--dark-gray);
+      font-size: 0.9rem;
+    }
+
+    
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal {
+      background-color: white;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: translateY(20px);
+      transition: transform 0.3s;
+    }
+
+    .modal-overlay.active .modal {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      padding: 25px;
+      border-bottom: 1px solid var(--gray);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--black);
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--dark-gray);
+    }
+
+    .modal-content {
+      padding: 25px;
+    }
+
+    .lesson-modal-image {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background-color: var(--gray);
+      border-radius: 15px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .lesson-modal-image video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .lesson-modal-desc {
+      margin-bottom: 30px;
+      line-height: 1.7;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 15px;
+    }
+
+    .modal-button {
+      flex: 1;
+      padding: 15px;
+      border-radius: 10px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s;
+    }
+
+    .modal-button.primary {
+      background-color: var(--green);
+      color: white;
+    }
+
+    .modal-button.primary:hover {
+      background-color: var(--dark-green);
+    }
+
+    .modal-button.secondary {
+      background-color: var(--gray);
+      color: var(--black);
+    }
+
+    .modal-button.secondary:hover {
+      background-color: #e0e0e0;
+    }
+
+    /* Page Sections */
+    .page-section {
+      display: none;
+      padding-top: 20px;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    /* Achievements */
+    .achievements-container {
+      margin-bottom: 40px;
+    }
+
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .achievement-card {
+      background-color: var(--white);
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+    }
+
+    .achievement-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .achievement-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .achievement-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+
+    .achievement-desc {
+      color: var(--dark-gray);
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+    }
+
+    .achievement-progress {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .achievement-bar {
+      flex: 1;
+      height: 8px;
+      background-color: var(--gray);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .achievement-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--green), var(--light-green));
+      border-radius: 4px;
+      transition: width 0.3s;
+    }
+
+    .achievement-progress span {
+      font-size: 0.8rem;
+      color: var(--dark-gray);
+      font-weight: bold;
+    }
+
+    /* Stats */
+    .stats-container {
+      margin-bottom: 40px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .stat-card {
+      background-color: var(--white);
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .stat-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      color: var(--dark-gray);
+      font-size: 0.9rem;
+    }
+
+    /* Quiz Modal */
+    .quiz-question {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .quiz-option {
+      background-color: var(--gray);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .quiz-option:hover {
+      background-color: #e0e0e0;
+    }
+
+    .quiz-option.correct {
+      background-color: var(--green);
+      color: white;
+    }
+
+    .quiz-option.incorrect {
+      background-color: var(--red);
+      color: white;
+    }
+
+    .quiz-option-image {
+      width: 80px;
+      height: 80px;
+      background-color: white;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.5rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .quiz-option-image video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .quiz-option-text {
+      font-size: 0.9rem;
+      display: none; /* Hide the text under answer options */
+    }
+
+    /* Video Upload Styles */
+    .video-upload-section {
+      background-color: var(--white);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .upload-header h3 {
+      font-size: 1.3rem;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+
+    .upload-header p {
+      color: var(--dark-gray);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .upload-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .upload-btn {
+      background: linear-gradient(135deg, var(--green), var(--light-green));
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+    }
+
+    .upload-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(88, 167, 0, 0.3);
+    }
+
+    .upload-info {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .upload-info span {
+      color: var(--dark-gray);
+      font-size: 0.9rem;
+    }
+
+    .upload-submit-btn {
+      background-color: var(--green);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+    }
+
+    .upload-submit-btn:hover {
+      background-color: var(--dark-green);
+      transform: translateY(-2px);
+    }
+
+    .upload-submit-btn:disabled {
+      background-color: var(--gray);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .quiz-feedback {
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      min-height: 30px;
+    }
+
+    .quiz-feedback.correct {
+      color: var(--green);
+    }
+
+    .quiz-feedback.incorrect {
+      color: var(--red);
+    }
+
+    .quiz-next {
+      width: 100%;
+      padding: 15px;
+      background-color: var(--green);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      display: none;
+      transition: all 0.3s;
+    }
+
+    .quiz-next:hover {
+      background-color: var(--dark-green);
+    }
+
+    /* Game Section Styles */
+    .game-container {
+      margin-bottom: 40px;
+    }
+
+    .back-button {
+      background-color: var(--gray);
+      color: var(--black);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #e0e0e0;
+    }
+
+    .game-content {
+      background-color: var(--white);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .game-content p {
+      font-size: 1.2rem;
+      color: var(--dark-gray);
+    }
+
+    /* Quiz Game Styles */
+    .quiz-game-container {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .quiz-game-container .custom-box {
+      background-color: var(--white);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      margin: 20px 0;
+    }
+
+    .quiz-game-container .home-box h3 {
+      font-size: 1.5rem;
+      color: var(--black);
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .quiz-game-container .home-box p {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: var(--dark-gray);
+    }
+
+    .quiz-game-container .home-box p span {
+      font-weight: 600;
+      color: var(--green);
+    }
+
+    .quiz-btn {
+      padding: 15px 30px;
+      background: linear-gradient(135deg, var(--green), var(--light-green));
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(88, 167, 0, 0.3);
+    }
+
+    .quiz-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(88, 167, 0, 0.4);
+    }
+
+    .quiz-game-container .quiz-box .question-number {
+      font-size: 1.1rem;
+      color: var(--green);
+      font-weight: 600;
+      border-bottom: 2px solid var(--gray);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .quiz-game-container .quiz-box .question-text {
+      font-size: 1.3rem;
+      color: var(--black);
+      padding: 20px 0;
+      line-height: 1.6;
+    }
+
+    .quiz-game-container .quiz-box .question-text video {
+      border-radius: 10px;
+      margin: 10px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      display: block;
+    }
+
+    .quiz-game-container .quiz-box .option-container .option {
+      background-color: var(--gray);
+      padding: 20px;
+      font-size: 1rem;
+      color: var(--black);
+      border-radius: 10px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .quiz-game-container .quiz-box .option-container .option:hover {
+      background-color: #e0e0e0;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .quiz-game-container .quiz-box .option-container .option.correct {
+      background-color: var(--green);
+      color: white;
+      border-color: var(--green);
+    }
+
+    .quiz-game-container .quiz-box .option-container .option.wrong {
+      background-color: var(--red);
+      color: white;
+      border-color: var(--red);
+    }
+
+    .quiz-game-container .quiz-box .answers-indicator {
+      border-top: 2px solid var(--gray);
+      margin-top: 20px;
+      padding-top: 15px;
+    }
+
+    .quiz-game-container .quiz-box .answers-indicator div {
+      height: 35px;
+      width: 35px;
+      background-color: var(--gray);
+      border-radius: 50%;
+      margin-right: 8px;
+      margin-top: 10px;
+      display: inline-block;
+      text-align: center;
+      line-height: 35px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: white;
+      transition: all 0.3s;
+    }
+
+    .quiz-game-container .quiz-box .answers-indicator div.correct {
+      background-color: var(--green);
+      transform: scale(1.1);
+    }
+
+    .quiz-game-container .quiz-box .answers-indicator div.wrong {
+      background-color: var(--red);
+      transform: scale(1.1);
+    }
+
+    .quiz-game-container .result-box {
+      text-align: center;
+    }
+
+    .quiz-game-container .result-box h1 {
+      font-size: 2rem;
+      color: var(--green);
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    .quiz-game-container .result-box table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      background-color: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .quiz-game-container .result-box table td {
+      border: 1px solid var(--gray);
+      padding: 15px;
+      font-size: 1rem;
+      color: var(--black);
+      width: 50%;
+      text-align: left;
+    }
+
+    .quiz-game-container .result-box table td:first-child {
+      background-color: var(--gray);
+      font-weight: 600;
+    }
+
+    .quiz-game-container .result-box .quiz-btn {
+      margin: 10px;
+    }
+
+    .quiz-game-container .hide {
+      display: none;
+    }
+
+    /* Footer Styles */
+    .footer {
+      background-color: var(--dark-green);
+      color: var(--white);
+      padding: 40px 30px;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      text-align: left;
+    }
+
+    .footer-section {
+      margin-bottom: 20px;
+    }
+
+    .footer-section h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: var(--light-green);
+    }
+
+    .footer-section p {
+      margin-bottom: 15px;
+      line-height: 1.7;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--light-green);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .footer-social a {
+      color: var(--white);
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .footer-social a:hover {
+      color: var(--light-green);
+    }
+
+    .footer-bottom {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    
+    .xp-popup {
+      position: fixed;
+      top:   50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: var(--green);
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: bold;
+      box-shadow: 0 10px 30px rgba(88, 167, 0, 0.4);
+      z-index: 3000;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.5s;
+    }
+
+    .xp-popup.show {
+      opacity: 1;
+      transform: translate(-50%, -60%);
+    }
+
+    /* Global video styling */
+    video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Ensure videos are properly contained */
+    .lesson-image video,
+    .lesson-modal-image video,
+    .quiz-option-image video {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Fix 16:9 aspect ratio for videos */
+    .lesson-modal-image {
+      aspect-ratio: 16/9;
+      width: 100%;
+    }
+
+    .lesson-modal-image video {
+      aspect-ratio: 16/9;
+      object-fit: contain;
+    }
+
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    
+      .hero {
+        padding: 60px;
+        margin-bottom: 20px;
+      }
+      
+      .hero-image {
+        width: 85px;
+        height: 85px;
+        margin-bottom: 15px;
+      }
+    
+    @media (max-width: 768px) {
+      .header {
+        padding: 0 10px;
+        height: 56px;
+        background-color: var(--white);
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      }
+      .logo-text {
+        font-size: 1.1rem;
+      }
+      .nav-items {
+        gap: 8px;
+      }
+      .nav-item i {
+        font-size: 1.2rem;
+      }
+      .main {
+        padding: 10px;
+        margin-top: 70px;
+      }
+      .hero h1 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+      }
+      .hero p {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+      .hero-image {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 15px;
+      }
+      .hero-image i {
+        font-size: 3rem;
+      }
+      .categories-grid, .lessons-grid, .achievements-grid, .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      
+      .lessons-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      
+      #allLessonsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .lesson-card, .category-card, .achievement-card, .stat-card {
+        padding: 12px;
+      }
+      
+      .lesson-image {
+        height: 100px;
+      }
+      
+      .lesson-info {
+        padding: 12px;
+      }
+      
+      .lesson-title {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+      }
+      
+      .lesson-desc {
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+      }
+      
+      .lesson-meta {
+        font-size: 0.7rem;
+      }
+      .lesson-title, .category-title, .achievement-title, .stat-label {
+        font-size: 1rem;
+      }
+      .lesson-desc, .category-count, .achievement-desc {
+        font-size: 0.85rem;
+      }
+      .lesson-meta, .stat-value {
+        font-size: 0.9rem;
+      }
+      .modal {
+        width: 95vw;
+        max-width: 95vw;
+        min-width: 0;
+        border-radius: 10px;
+        margin: 10px;
+        max-height: 90vh;
+      }
+      .modal-content, .modal-header {
+        padding: 15px;
+      }
+      .lesson-modal-image {
+        font-size: 2.5rem;
+        min-height: 150px;
+        max-height: 200px;
+        border-radius: 10px;
+        position: relative;
+        aspect-ratio: 16/9;
+      }
+      .lesson-modal-image video {
+        border-radius: 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background-color: #000;
+      }
+      .quiz-options {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .quiz-option {
+        padding: 15px;
+        font-size: 1rem;
+        border-radius: 10px;
+      }
+      .quiz-option-image {
+        width: 60px;
+        height: 60px;
+        border-radius: 8px;
+      }
+      .quiz-option-image video {
+        border-radius: 8px;
+      }
+      .quiz-next, .quiz-btn, .modal-button {
+        font-size: 1rem;
+        padding: 15px 0;
+        border-radius: 8px;
+        margin-top: 10px;
+      }
+      .video-upload-section {
+        padding: 15px;
+      }
+      .upload-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+      .upload-btn, .upload-submit-btn {
+        width: 100%;
+        padding: 15px 0;
+        font-size: 1rem;
+      }
+      .upload-info span {
+        font-size: 0.85rem;
+      }
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 15px;
+      }
+      .footer-section {
+        margin-bottom: 15px;
+      }
+      .footer-social {
+        justify-content: center;
+      }
+      .quiz-question {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+      }
+      .quiz-feedback {
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+    }
+    @media (max-width: 480px) {
+      .header {
+        height: 48px;
+        padding: 0 4px;
+        background-color: var(--white);
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      }
+      .logo-text {
+        font-size: 0.9rem;
+      }
+      .main {
+        padding: 4px;
+        margin-top: 60px;
+      }
+      .hero {
+        padding: 20px;
+        margin-bottom: 10px;
+      }
+      .hero h1 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+      }
+      .hero p {
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+      }
+      .hero-image {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 10px;
+      }
+      .hero-image i {
+        font-size: 2.5rem;
+      }
+      .lesson-title, .category-title, .achievement-title, .stat-label {
+        font-size: 0.9rem;
+      }
+      .lesson-desc, .category-count, .achievement-desc {
+        font-size: 0.75rem;
+      }
+      .lesson-meta, .stat-value {
+        font-size: 0.8rem;
+      }
+      .modal {
+        width: 98vw;
+        max-width: 98vw;
+        min-width: 0;
+        border-radius: 8px;
+        margin: 5px;
+        max-height: 95vh;
+      }
+      .modal-content, .modal-header {
+        padding: 10px;
+      }
+      .lesson-modal-image {
+        font-size: 1.2rem;
+        min-height: 100px;
+        max-height: 150px;
+        border-radius: 8px;
+        position: relative;
+        aspect-ratio: 16/9;
+      }
+      .lesson-modal-image video {
+        border-radius: 8px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background-color: #000;
+      }
+      
+      .lesson-image {
+        height: 80px;
+      }
+      
+      .lesson-info {
+        padding: 10px;
+      }
+      
+      .lesson-title {
+        font-size: 0.85rem;
+        margin-bottom: 5px;
+      }
+      
+      .lesson-desc {
+        font-size: 0.75rem;
+        margin-bottom: 6px;
+      }
+      
+      .lesson-meta {
+        font-size: 0.65rem;
+      }
+      .quiz-option-image {
+        width: 40px;
+        height: 40px;
+        border-radius: 6px;
+      }
+      .quiz-option-image video {
+        border-radius: 6px;
+      }
+      .quiz-next, .quiz-btn, .modal-button {
+        font-size: 0.9rem;
+        padding: 12px 0;
+        border-radius: 6px;
+        margin-top: 8px;
+      }
+      .upload-btn, .upload-submit-btn {
+        font-size: 0.9rem;
+        padding: 12px 0;
+      }
+      .quiz-question {
+        font-size: 1rem;
+        margin-bottom: 15px;
+      }
+      .quiz-feedback {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+      
+      .section-title {
+        font-size: 1.1rem;
+      }
+      
+      .section-header {
+        margin-bottom: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <header class="header">
+    <div class="logo">
+      <i class="fas fa-hands logo-icon"></i>
+      <div class="logo-text">SEE&SIGN</div>
+    </div>
+    <div class="nav-items">
+      <div class="nav-item active">
+        <i class="fas fa-home"></i>
+        <div class="nav-item-text">Нүүр</div>
+      </div>
+      <div class="nav-item">
+        <i class="fas fa-book"></i>
+        <div class="nav-item-text">Хичээл</div>
+      </div>
+      <div class="nav-item">
+        <i class="fas fa-gamepad"></i>
+        <div class="nav-item-text">Тоглоом</div>
+      </div>
+      <div class="nav-item">
+        <i class="fas fa-trophy"></i>
+        <div class="nav-item-text">Амжилт</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    
+    <!-- Нүүр хуудас -->
+    <section class="page-section active" id="home-page">
+      <section class="hero">
+        <div class="hero-image">
+          <i class="fas fa-hands-helping"></i>
+        </div>
+        <h1>Монгол Дохионы Хэл Суралцацгаая!</h1>
+        <p>20 хоногийн турш дохионы хэл сурах хөгжилтэй тоглоом. Өдөр бүр шинэ дохио сурч, дасгал хийх боломжтой.</p>
+        <div class="scroll-down">
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </section>
+
+      <section class="categories-container" id="categories">
+        <div class="section-header">
+          <div class="section-title">Ангилалууд</div>
+          <div class="view-all">Бүгдийг харах</div>
+        </div>
+        <div class="categories-grid">
+          
+          <div class="category-card" data-category="everyday">
+            <div class="category-icon">🏠</div>
+            <div class="category-title">Түгээмэл хэрэглэгддэг</div>
+            <div class="category-count">5 хичээл</div>
+          </div>
+          
+          <div class="category-card" data-category="hospital">
+            <div class="category-icon">🏥</div>
+            <div class="category-title">Эмнэлэг</div>
+            <div class="category-count">5 хичээл</div>
+          </div>
+          
+          <div class="category-card" data-category="shop">
+            <div class="category-icon">🛒</div>
+            <div class="category-title">Хоол хүнс</div>
+            <div class="category-count">5 хичээл</div>
+          </div>
+          
+          <div class="category-card" data-category="school">
+            <div class="category-icon">🏫</div>
+            <div class="category-title">Сургууль</div>
+            <div class="category-count">5 хичээл</div>
+          </div>
+
+          <div class="category-card" data-category="work">
+            <div class="category-icon">💼</div>
+            <div class="category-title">Ажил</div>
+            <div class="category-count">5 хичээл</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="lessons-container" id="lessons">
+        <div class="section-header">
+          <div class="section-title">Хичээлүүд</div>
+          <div class="view-all">Бүгдийг харах</div>
+        </div>
+        <div class="lessons-grid" id="lessonsGrid">
+        </div>
+      </section>
+
+      <section class="progress-container">
+        <div class="progress-header">
+          <div class="progress-title">Миний ахиц</div>
+          <div class="xp-display">0 XP</div>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar"></div>
+        </div>
+        <div class="progress-details">
+          <span>0 хичээл дуусгасан</span>
+          <span>Дараагийн түвшин хүртэл 100 XP</span>
+        </div>
+      </section>
+    </section>
+
+    <!-- Хичээл хуудас -->
+    <section class="page-section" id="lessons-page">
+      <section class="hero">
+        <div class="hero-image">
+          <i class="fas fa-book"></i>
+        </div>
+        <h1>Бүх Хичээлүүд</h1>
+        <p>Дохионы хэл сурахын тулд бүх хичээлүүдийг дарааллаар нь суралцаарай.</p>
+      </section>
+
+      <section class="categories-container">
+        <div class="section-header">
+          <div class="section-title">Ангилалууд</div>
+        </div>
+        <div class="categories-grid" id="lessonsPageCategories">
+          <!-- Categories will be loaded here -->
+        </div>
+      </section>
+
+      <section class="lessons-container">
+        <div class="section-header">
+          <div class="section-title">Бүх хичээлүүд</div>
+        </div>
+        
+        <div class="lessons-grid" id="allLessonsGrid">
+          <!-- All lessons will be loaded here -->
+        </div>
+      </section>
+    </section>
+
+    <!-- Тоглоом хуудас -->
+    <section class="page-section" id="games-page">
+      <section class="hero">
+        <div class="hero-image">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        <h1>Тоглоом</h1>
+        <p>Хичээлүүдээ сурсны дараа тоглоомоор дасгал хийж, мэдлэгээ бататгаарай.</p>
+      </section>
+
+      <section class="categories-container">
+        <div class="section-header">
+          <div class="section-title">Тоглоомын ангилалууд</div>
+        </div>
+        <div class="categories-grid" id="gamesPageCategories">
+          <!-- Game categories will be loaded here -->
+        </div>
+      </section>
+
+      <section class="game-container" id="gameContainer" style="display: none;">
+        <div class="section-header">
+          <div class="section-title" id="gameTitle">Тоглоом</div>
+          <button class="back-button" id="backToGames">
+            <i class="fas fa-arrow-left"></i> Буцах
+          </button>
+        </div>
+        <div class="game-content" id="gameContent">
+          <!-- Game content will be loaded here -->
+        </div>
+      </section>
+    </section>
+
+    <!-- Амжилт хуудас -->
+    <section class="page-section" id="achievements-page">
+      <section class="hero">
+        <div class="hero-image">
+          <i class="fas fa-trophy"></i>
+        </div>
+        <h1>Миний Амжилтууд</h1>
+        <p>Суралцаж байгаа ахиц болон олж авсан амжилтуудаа харна уу.</p>
+      </section>
+
+      <section class="progress-container">
+        <div class="progress-header">
+          <div class="progress-title">Ерөнхий ахиц</div>
+          <div class="xp-display">0 XP</div>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar"></div>
+        </div>
+        <div class="progress-details">
+          <span>0 хичээл дуусгасан</span>
+          <span>Дараагийн түвшин хүртэл 100 XP</span>
+        </div>
+      </section>
+
+      <section class="achievements-container">
+        <div class="section-header">
+          <div class="section-title">Амжилтууд</div>
+        </div>
+        <div class="achievements-grid" id="achievementsGrid">
+          <div class="achievement-card">
+            <div class="achievement-icon">🎯</div>
+            <div class="achievement-title">Эхний алхам</div>
+            <div class="achievement-desc">Анхны хичээлээ дуусга</div>
+            <div class="achievement-progress">
+              <div class="achievement-bar">
+                <div class="achievement-fill" style="width: 0%"></div>
+              </div>
+              <span>0/1</span>
+            </div>
+          </div>
+
+          <div class="achievement-card">
+            <div class="achievement-icon">🔥</div>
+            <div class="achievement-title">Халуун цуваа</div>
+            <div class="achievement-desc">3 өдөр дараалан суралца</div>
+            <div class="achievement-progress">
+              <div class="achievement-bar">
+                <div class="achievement-fill" style="width: 0%"></div>
+              </div>
+              <span>0/3</span>
+            </div>
+          </div>
+
+          <div class="achievement-card">
+            <div class="achievement-icon">📚</div>
+            <div class="achievement-title">Сурагч</div>
+            <div class="achievement-desc">10 хичээл дуусга</div>
+            <div class="achievement-progress">
+              <div class="achievement-bar">
+                <div class="achievement-fill" style="width: 0%"></div>
+              </div>
+              <span>0/10</span>
+            </div>
+          </div>
+
+          <div class="achievement-card">
+            <div class="achievement-icon">🏆</div>
+            <div class="achievement-title">Мастер</div>
+            <div class="achievement-desc">Бүх хичээлүүдийг дуусга</div>
+            <div class="achievement-progress">
+              <div class="achievement-bar">
+                <div class="achievement-fill" style="width: 0%"></div>
+              </div>
+              <span>0/25</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-container">
+        <div class="section-header">
+          <div class="section-title">Статистик</div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">📅</div>
+            <div class="stat-value">0</div>
+            <div class="stat-label">Суралцсан өдөр</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🔥</div>
+            <div class="stat-value">0</div>
+            <div class="stat-label">Халуун цуваа</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">⭐</div>
+            <div class="stat-value">0</div>
+            <div class="stat-label">Нийт оноо</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🎯</div>
+            <div class="stat-value">0%</div>
+            <div class="stat-label">Нарийвчлал</div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Дохионы Хэл</h3>
+        <p>Монгол дохионы хэл сурах хамгийн хялбар платформ. Бид хүүхдүүд болон насанд хүрэгчдэд зориулсан хичээлүүдийг санал болгодог.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Холбоос</h3>
+        <ul class="footer-links">
+          <li><a href="#">Нүүр хуудас</a></li>
+          <li><a href="#">Хичээлүүд</a></li>
+          <li><a href="#">Тоглоом</a></li>
+          <li><a href="#">Амжилт</a></li>
+          <li><a href="#">Бидний тухай</a></li>
+          <li><a href="#">Холбоо барих</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Холбоо барих</h3>
+        <p><i class="fas fa-map-marker-alt"></i>Дорнод аймаг,Хэрлэн сум</p>
+        <p><i class="fas fa-phone"></i> +976 80371087</p>
+        <p><i class="fas fa-envelope"></i> binderya517@gmail.com</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>Энэхүү вэб сайтыг Аймгийн мэдээлэл зүйн төрөлжсөн олимпиадын БҮТЭЭЛ төрөлд зориулав. <br> &copy; 2025 он </p>
+    </div>
+  </footer>
+
+  
+  <div class="modal-overlay" id="lessonModal">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="lessonModalTitle">Хичээл</div>
+        <button class="modal-close" id="closeModal">&times;</button>
+      </div>
+      <div class="modal-content" id="lessonModalContent">
+      
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal-overlay" id="quizModal">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">Шалгалт</div>
+        <button class="modal-close" id="closeQuiz">&times;</button>
+      </div>
+      <div class="modal-content" id="quizModalContent">
+        
+      </div>
+    </div>
+  </div>
+
+
+  <div class="xp-popup" id="xpPopup">+10 XP!</div>
+
+  <script>
+    
+    const categories = [
+      {
+        id: 'everyday',
+        title: 'Түгээмэл хэрэглэгддэг',
+        icon: '🏠',
+        lessons: [
+          {
+            id: 'everyday-1',
+            title: 'Сайн уу',
+            emoji: '👋',
+            video: 'videos/Сайн уу.mp4',
+            description: 'Энгийн мэндчилгээний үг',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: '"Сайн уу" гэдэг нь энгийн мэндчилгээний үг юм. Үүнийг хийхийн тулд:',
+              steps: [
+                'Баруун гараа өргөж, дотогш нь харсан байрлалд байрлуулна',
+                'Гараа бага зэрэг хөдөлгөн мэндэлнэ',
+                'Нүүрэн дээр инээмсэглэл гаргана'
+              ],
+              video: 'videos/Сайн уу.mp4' 
+            },
+            quiz: {
+              question: '"Сайн уу" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Сайн уу.mp4',  correct: true },
+                { video: 'videos/Аан, мхн.mp4',  correct: false },
+                { video: 'videos/Амжилт.mp4',  correct: false },
+                { video: 'videos/Баяртай.mp4',  correct: false }
+              ]
+            }
+          },
+          {
+            id: 'everyday-2',
+            title: 'Уучлаарай, өршөөгөөрэй хүлцэл өчих',
+            emoji: '👋',
+            video: 'videos/Уучлаарай.mp4',
+            description: 'Уучлалт гуйх үеийн мэндчилгээ',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: '"Уучлаарай" гэдэг нь алдаа гаргасан үедээ бусдаас уучлал хүсэх үг юм.',
+              steps: [
+                'Баруун гарынхаа алганы ар талд (гараа атгалгүй сул тавина) зүүн гарынхаа алгаар зөөлөн хүрнэ',
+                'Баруун гарыг зүрх рүүгээ аваачин дараа нь доош чиглүүлнэ',
+                'Нүүрэндээ гэмшсэн байдал, харамссан харц гаргана'
+              ],
+              video: 'videos/Уучлаарай.mp4'
+            },
+            quiz: {
+              question: '"Уучлаарай" дохио аль нь вэ?',
+              options: [
+                { video: 'videos/Сайн уу.mp4', correct: false },
+                { video: 'videos/Амжилт.mp4', text: 'Явах', correct: false },
+                { video: 'videos/Уучлаарай.mp4', correct: true },
+                { video: 'videos/Баяртай.mp4', text: 'Дуудлага', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'everyday-3',
+            title: 'Аан, мхн (анхааралтай)',
+            emoji: '🙏',
+            video: 'videos/Аан, мхн.mp4',
+            description: 'Ойлгож байгаагаа илэрхийлэх утгатай',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: 'Энэ нь "Би сонсож байна", "Би ойлголоо", "Анхааралтай байна" гэсэн утгыг илэрхийлдэг',
+              steps: [
+                'Баруун гарынхаа хурууг чихний ойролцоо аваачна',
+                'Толгойгоо зөөлөн доош тонгойлгон, бага зэрэг дохино',
+                'Нүдээрээ ярьж буй хүнийг анхааралтай ширтэнэ'
+              ],
+              video: 'videos/Аан, мхн.mp4' 
+            },
+            quiz: {
+              question: '"Аан, мхн (анхааралтай)" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Аан, мхн.mp4', text: 'Баярлалаа', correct: true },
+                { video: 'videos/Амжилт.mp4', text: 'Хүлээж авах', correct: false },
+                { video: 'videos/Баяртай.mp4', text: 'Зүгээр үү', correct: false },
+                { video: 'videos/Сайн уу.mp4', text: 'Мэндлэх', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'everyday-4',
+            title: 'Амжилт',
+            emoji: '🙇',
+            video: 'videos/Амжилт.mp4',
+            description: 'Амжилт хүсэх үг',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: '"Амжилт" гэдэг нь зорьсон зүйлээ сайн хийхийг хүсэн ерөөж буй үг юм. Найрсаг, урам зориг өгсөн мэндчилгээ гэж ойлгож болно.',
+              steps: [
+                'Баруун гарынхаа эрхий хурууг гозойлгоно ',
+                'Энэ гозойлгосон гарынхаа чиглэлийг урагш, дээш чиглүүлэн сэгсэрнэ',
+                'Нүүрэндээ урам өгсөн, инээмсэглэсэн илэрхийлэл гаргана'
+              ],
+              video: 'videos/Амжилт.mp4' 
+            },
+            quiz: {
+              question: '"Амжилт" дохио аль нь вэ?',
+              options: [
+                { video: 'videos/Сайн уу.mp4', text: 'Баярлалаа', correct: false },
+                { video: 'videos/Амжилт.mp4', text: 'Уучлаарай', correct: true },
+                { video: 'videos/Аан, мхн.mp4', text: 'Ичгүүртэй', correct: false },
+                { video: 'videos/Уучлаарай.mp4', text: 'Мэдэхгүй', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'everyday-5',
+            title: 'Баяртай',
+            emoji: '👍',
+            video: 'videos/Баяртай.mp4',
+            description: 'Явах үед хэрэглэх үг',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: '"Баяртай" гэдэг нь хүнтэй түр салж буй үед хэлдэг мэндчилгээний үг юм. Эелдэг, инээмсэглэлтэй байдлаар хэлдэг.',
+              steps: [
+                'Гараа сагсайлган, даллан дохино',
+                'Хуруугаа бага зэрэг нугалж, дээш доош хөнгөн хөдөлгөнө',
+                'Нүүрэн дээрээ инээмсэглэл гаргана'
+              ],
+              video: 'videos/Баяртай.mp4' 
+            },
+            quiz: {
+              question: '"Баяртай" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Баяртай.mp4', text: 'Тийм ээ', correct: true },
+                { video: 'videos/Амжилт.mp4', text: 'Үгүй ээ', correct: false },
+                { video: 'videos/Уучлаарай.mp4', text: 'Бөгж', correct: false },
+                { video: 'videos/Аан, мхн.mp4', text: 'Сайн', correct: false }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        id: 'hospital',
+        title: 'Эмнэлэг',
+        icon: '🏥',
+        lessons: [
+          {
+            id: 'hospital-1',
+            title: 'Өвдөх, зовиурлах',
+            emoji: '🤕',
+            video: 'videos/Өвдөх.mp4',
+            description: 'Өвдөлт илэрхийлэх үг',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: '"Өвдөлт" гэдэг нь өвдөлт илэрхийлэх үг юм. Үүнийг хийхийн тулд:',
+              steps: [
+                'Гараа өвдөж буй газраа байрлуулна',
+                'Хуруугаа бага зэрэг дараад',
+                'Нүүрэн дээр өвдөлт илэрхийлнэ'
+              ],
+              video: 'videos/Өвдөх.mp4' 
+            },
+            quiz: {
+              question: '"Өвдөлт" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Өвдөх.mp4', text: 'Өвдөлт', correct: true },
+                { video: 'videos/Ханиад.mp4', text: 'Хэвийн бус', correct: false },
+                { video: 'videos/Тарих.mp4', text: 'Дотор муухайрах', correct: false },
+                { video: 'videos/Шинжилгээ.mp4', text: 'Бөөлжих', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'hospital-2',
+            title: 'Ханиад',
+            emoji: '👨‍⚕️',
+            video: 'videos/Ханиад.mp4',
+            description: 'Ханиад',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: '"Ханиад" гэдэг нь вирус эсвэл ханиалгах, найтаах шинж тэмдэг бүхий өвчнийг хэлдэг. Дохионы хэлэнд биеийн хэлэмжээр илэрхийлдэг.',
+              steps: [
+                'Баруун гараараа хамраа зөөлөн дарна',
+                'Дараа нь тохой руугаа бага зэрэг ханиаж буй хөдөлгөөн хийнэ',
+                'Нүүрэн дээрээ ядруу, зовуурьтай байдал гаргана'
+              ],
+              video: 'videos/Ханиад.mp4' 
+            },
+            quiz: {
+              question: '"Ханиад" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Ханиад.mp4', text: 'Тогооч', correct: true },
+                { video: 'videos/Хагалгаа.mp4', text: 'Тогооч', correct: false },
+                { video: 'videos/Шинжилгээ.mp4', text: 'Механик', correct: false },
+                { video: 'videos/Өвдөх.mp4', text: 'Гал түймэр', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'hospital-3',
+            title: 'Шинжилгээ',
+            emoji: '💊',
+            video: 'videos/Шинжилгээ.mp4',
+            description: 'Шинжилгээ',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: '"**Шинжилгээ**" гэдэг нь **ямар нэг зүйл (цус, шүлс, бичиг баримт гэх мэт)-ийг авч судлах, шалгах** үйлдэл юм.',
+              steps: [
+                'Зүүн гараар алган дээрээ ямар нэг зүйл авах мэт хөдөлгөөн хийнэ',
+                'Тэр зүйлээ хуруу, гараараа барьж авч, ажиглаж буй мэт хөдөлгөөн хийнэ',
+              ],
+              video: 'videos/Шинжилгээ.mp4' 
+            },
+            quiz: {
+              question: '"Шинжилгээ" дохио аль нь вэ?',
+              options: [
+                { video: 'videos/Шинжилгээ.mp4', text: 'Чихэр', correct: true},
+                { video: 'videos/Тарих.mp4', text: 'Чихэр', correct: false },
+                { video: 'videos/Өвдөх.mp4', text: 'Алим', correct: false },
+                { video: 'videos/Ханиад.mp4', text: 'Күүки', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'hospital-4',
+            title: 'Хагалгаа, мэс засал',
+            emoji: '🆘',
+            video: 'videos/Хагалгаа.mp4',
+            description: 'Хагалгаа',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: 'Биеийн хэсгийг зүсэж, эмчилгээ хийх эмнэлгийн үйлдэл.',
+              steps: [
+                'Зүүн гараа зүсэх гэж буй хэсэг мэт цээжний өмнө байрлуулна.',
+                'Баруун гарын хоёр хуруугаар (эрхий, долоовор) зүүн гарын алга руу шулуун зүсэх мэт хөдөлгөөн хийнэ.',
+                'Анхаарал төвлөрсөн, эмчийн мэт нүүрний илэрхийлэл гаргана.'
+              ],
+              video: 'videos/Хагалгаа.mp4' 
+            },
+            quiz: {
+              question: '"Хагалгаа, мэс засал" дохиог аль нь вэ?',
+              options: [          
+                { video: 'videos/Тарих.mp4', text: 'Баяр хүргэе', correct: false },
+                { video: 'videos/Ханиад.mp4', text: 'Зогс', correct: false },            
+                 { video: 'videos/Хагалгаа.mp4', text: 'Зогс', correct: true }, 
+                { video: 'videos/Өвдөх.mp4', text: 'Баяр хүргэе', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'hospital-5',
+            title: 'Вакцин тарих, тариа тарилга',
+            emoji: '👍',
+            video: 'videos/Тарих.mp4',
+            description: 'Вакцин тарих, тариа тарилга',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: 'Биеийн арьсан дор зүүгээр эм, вакцин шахах эмнэлгийн үйлдэл.',
+              steps: [
+                'Зүүн гарын дээд хэсгийг (мөр орчим) сул тавина',
+                'Баруун гарын хоёр хуруугаар (бариултай мэт) зүүн гарын мөрөнд зүү зоож буй мэт хөдөлгөөн хийнэ',
+                'Тариа шахаж буй мэт дарах хөдөлгөөн'
+              ],
+              video: 'videos/Тарих.mp4' 
+            },
+            quiz: {
+              question: '"Вакцин тарих, тариа тарилга" дохио аль нь вэ?',
+              options: [
+                { video: 'videos/Хагалгаа.mp4', text: 'Хэвийн бус', correct: false },
+                { video: 'videos/Шинжилгээ.mp4', text: 'Ялсан', correct: false },
+                { video: 'videos/Ханиад.mp4', text: 'Муу', correct: false },
+                { video: 'videos/Тарих.mp4', text: 'Муу', correct: true }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        id: 'shop',
+        title: 'Хоол хүнс',
+        icon: '🛒',
+        lessons: [
+          {
+            id: 'shop-1',
+            title: 'Цадах',
+            emoji: '🛍️',
+            video: 'videos/Цадах.mp4',
+            description: 'Цадах',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: 'Хангалттай идээд дажгүй, бүрэн дүүрэн мэдрэмж авах.',
+              steps: [
+                'Гарын алгаараа амаа зөөлөн хүрэх мэт хөдөлгөөн хийнэ',
+                'Түүнээс дараа цээж рүүгээ хүрэх эсвэл алгаа гэдэсний орчимд тавина',
+                'Нүүрэн дээрээ тайван, сэтгэл хангалуун илэрхийлэл гаргана'
+              ],
+              video: 'videos/Цадах.mp4' 
+            },
+            quiz: {
+              question: '"Цадах" дохио аль нь вэ?',
+              options: [
+                { video: 'videos/Өлсөх.mp4', text: 'Мөнгө', correct: false },
+                { video: 'videos/Цангах.mp4', text: 'Карт', correct: false },
+                { video: 'videos/Идэх.mp4', text: 'Нэхэмжлэх', correct: false },
+                { video: 'videos/Цадах.mp4', text: 'Худалдаж авах', correct: true },
+              ]
+            }
+          },
+          {
+            id: 'shop-2',
+            title: 'Өлсөх',
+            emoji: '💰',
+            video: 'videos/Өлсөх.mp4',
+            description: 'Өлсөх',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: 'Хоол идээгүй удаан болсноос гэдэс хоосон мэдрэгдэх.',
+              steps: [
+                'Гарын алга эсвэл хуруугаар гэдэсний орчмыг зөөлөн товшино',
+                'Алгаа бага зэрэг мушгиж, дотогш шахсан хөдөлгөөн хийнэ',
+                'Нүүрэндээ бага зэрэг ядарсан, идэх юм хүссэн мэт илэрхийлэл'
+              ],
+              video: 'videos/Өлсөх.mp4' 
+            },
+            quiz: {
+              question: '"Өлсөх" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Өлсөх.mp4', text: 'Худалдаж авах', correct: true },
+                { video: 'videos/Цадах.mp4', text: 'Мөнгө', correct: false },
+                { video: 'videos/Цангах.mp4', text: 'Карт', correct: false },
+                { video: 'videos/Талх.mp4', text: 'Нэхэмжлэх', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'shop-3',
+            title: 'Талх',
+            emoji: '💵',
+            video: 'videos/Талх.mp4',
+            description: 'Талх',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: 'Гурилаар хийсэн, шарах шүүгээнд болгосон хүнс. Өглөөний цайнд иддэг, гол хүнс.',
+              steps: [
+                'Зүүн гарын алгаа цээжний өмнө цаас тавьсан мэт барина',
+                'Баруун гараараа хутгаар хэрчиж буй мэт хөдөлгөөн хийнэ',
+                'Нүүрэндээ тайван, ойлгомжтой илэрхийлэл гаргана'
+              ],
+              video: 'videos/Талх.mp4' 
+            },
+            quiz: {
+              question: '"Талх" дохио аль нь вэ?',
+              options: [
+                { video: 'videos/Идэх.mp4', text: 'Нэхэмжлэх', correct: false },
+                { video: 'videos/Өлсөх.mp4', text: 'Карт', correct: false },
+                { video: 'videos/Цангах.mp4', text: 'Нэхэмжлэх', correct: false },
+                { video: 'videos/Талх.mp4', text: 'Карт', correct: true },
+              ]
+            }
+          },
+          {
+            id: 'shop-4',
+            title: 'Цангах',
+            emoji: '🙏',
+            video: 'videos/Цангах.mp4',
+            description: 'Цангах',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: 'Хоол, ундаанаас хомсдолтой байж, ус эсвэл уух зүйл хүсэх мэдрэмж',
+              steps: [
+                'Зүүн гараа амны ойролцоо тавиад уух зүйл хүсэж буй мэт хөдөлгөөн хийнэ',
+                'Баруун гараараа ам руу шилжүүлж, уух юм хүсэх',
+                'Нүүрэндээ сэтгэл эмтэрсэн, цангаж байгаа илэрхийлэл гаргана'
+              ],
+              video: 'videos/Цангах.mp4' 
+            },
+            quiz: {
+              question: '"Цангах" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Цангах.mp4', text: 'Баярлалаа', correct: true },
+                { video: 'videos/Цадах.mp4', text: 'Хүлээж авах', correct: false },
+                { video: 'videos/Талх.mp4', text: 'Зүгээр үү', correct: false },
+                { video: 'videos/Идэх.mp4', text: 'Мэндлэх', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'shop-5',
+            title: 'Идэх',
+            emoji: '👋',
+            video: 'videos/Идэх.mp4',
+            description: 'Идэх',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: 'Хоол, ундаа амандаа хийж, шингээж авах үйлдэл.',
+              steps: [
+                'Зүүн гарын алгаа нээж, баруун гарын хуруугаар ам руу тавьж байх мэт хөдөлгөөн хийнэ',
+                'Баруун гараа ам руу хүргэж, зөөлөн хөдөлгөөн хийнэ',
+                'Нүүрэндээ амттай, хангалуун илэрхийлэл гаргана'
+              ],
+              video: 'videos/Идэх.mp4' 
+            },
+            quiz: {
+              question: '"Идэх" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Талх.mp4', text: 'Явах', correct: false},
+                { video: 'videos/Идэх.mp4', text: 'Дуудлага', correct: true},
+                { video: 'videos/Цангах.mp4', text: 'Явах', correct: false},
+                { video: 'videos/Өлсөх.mp4', text: 'Дуудлага', correct: false}
+              ]
+            }
+          }
+        ]
+      },
+      {
+        id: 'school',
+        title: 'Сургууль',
+        icon: '🏫',
+        lessons: [
+          {
+            id: 'school-1',
+            title: 'Дүн',
+            emoji: '👨‍🏫',
+            video: 'videos/Дүн.mp4',
+            description: 'Дүн',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: 'Шалгалт, даалгавар, ажлын үнэлгээ, оноо.',
+              steps: [
+                'Цээжний өмнө гарын алга дээш харуулж байрлуулна',
+                'Баруун гарын хоёр хуруугаар (✌️) тоо зааж байгаа мэт хөдөлгөөн хийнэ',
+                'Нүүрэндээ баттай, тайван илэрхийлэл гаргана'
+              ],
+              video: 'videos/Дүн.mp4' 
+            },
+            quiz: {
+              question: '"Дүн" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Заах, сургах.mp4', text: 'Тогооч', correct: false},
+                { video: 'videos/Дүн.mp4', text: 'Механик', correct: true},
+                { video: 'videos/Сурагч.mp4', text: 'Тогооч', correct: false},
+                { video: 'videos/Дохионы хэл.mp4', text: 'Механик', correct: false}
+              ]
+            }
+          },
+          {
+            id: 'school-2',
+            title: 'Дохионы хэл, дохионы хэлээр ярих',
+            emoji: '👦',
+            video: 'videos/Дохионы хэл.mp4',
+            description: 'Дохионы хэл, дохионы хэлээр ярих',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: 'Гараар хөдлөл хийж, үг орлуулан харилцах хэл.',
+              steps: [
+                'Хоёр гараа цээжний өмнө авчирч, энгийн хөдөлгөөнөөр хэд хэдэн дохио хийх мэт хөдөлгөнө',
+                'Баруун гарын алгаараа зүүн гарын алганы дээгүүр зөөлөн хөндлөн хөдөлнө',
+                'Нүүрэндээ тайван, ярьж буй мэт илэрхийлэл гаргана'
+              ],
+              video: 'videos/Дохионы хэл.mp4' 
+            },
+            quiz: {
+              question: '"Дохионы хэл, дохионы хэлээр ярих" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Заах, сургах.mp4', text: 'Тогооч', correct: false},
+                { video: 'videos/Дүн.mp4', text: 'Механик', correct: false},
+                { video: 'videos/Сурагч.mp4', text: 'Тогооч', correct: false},
+                { video: 'videos/Дохионы хэл.mp4', text: 'Механик', correct: true}
+              ]
+            }
+          },
+          {
+            id: 'school-3',
+            title: 'Заах, сургах',
+            emoji: '📚',
+            video: 'videos/Заах, сургах.mp4',
+            description: 'Заах, сургах',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: 'Хэн нэгэнд мэдлэг, мэдээлэл дамжуулах үйлдэл.',
+              steps: [
+                'Баруун гарын долоовор хуруугаар (👆) аль нэг зүйлийг заана',
+                'Хуруугаа зааж буй зүйлээс хүний зүг чиглүүлэн хөдөлгөнө',
+                'Нүүрэндээ төвлөрсөн, итгэлтэй илэрхийлэл гаргана'
+              ],
+              video: 'videos/Заах, сургах.mp4'
+            },
+            quiz: {
+              question: '"Заах, сургах" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Заах, сургах.mp4', text: 'Ном', correct: true},
+                { video: 'videos/Сурагч.mp4', text: 'Ном', correct: false},
+                { video: 'videos/Дүн.mp4', text: 'Ном', correct: false},
+                { video: 'videos/Бичиг бичих.mp4', text: 'Ном', correct: false},
+              ]
+            }
+          },
+          {
+            id: 'school-4',
+            title: 'Бичиг бичих',
+            emoji: '✏️',
+            video: 'videos/Бичиг бичих.mp4',
+            description: 'Бичиг бичих',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: 'Цаасан дээр үзгээр үг, өгүүлбэр тэмдэглэх үйлдэл.',
+              steps: [
+                'Зүүн гараа цаас барьж буй мэт цээжний өмнө байрлуулна',
+                'Баруун гарын хоёр хуруугаар (эсвэл үзэг барьж буй мэт)',
+                'Нүүрэндээ анхааралтай, төвлөрсөн илэрхийлэл гаргана'
+              ],
+              video: 'videos/Бичиг бичих.mp4' 
+            },
+            quiz: {
+              question: '"Бичиг бичих" дохио аль нь вэ?',
+              options: [
+                { video: 'videos/Заах, сурах.mp4', text: 'Үзэг', correct: false},
+                { video: 'videos/Дүн.mp4', text: 'Үзэг', correct: false},
+                { video: 'videos/Бичиг бичих.mp4', text: 'Үзэг', correct: true},
+                { video: 'videos/Сурагч.mp4', text: 'Үзэг', correct: false}
+              ]
+            }
+          },
+          {
+            id: 'school-5',
+            title: 'Сурагч',
+            emoji: '❓',
+            video: 'videos/Сурагч.mp4',
+            description: 'Сурагч',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: 'Сургуульд сурч байгаа хүн — хичээл үздэг, багшаас мэдлэг авдаг.',
+              steps: [
+                'Зүүн алган дээрээс баруун гарын хуруугаар "мэдлэг авч буй" мэт хөдөлгөөн хийнэ',
+                'Тэр мэдлэгийг өөртөө "түлхэж авах" мэт хөдөлгөөн хийнэ',
+                'Нүүрэндээ анхааралтай, суралцаж буй мэт илэрхийлэл гаргана'
+              ],
+              video: 'videos/Сурагч.mp4' 
+            },
+            quiz: {
+              question: '"Сурагч" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Дохионы хэл.mp4', text: 'Цэг асуулт', correct: false},
+                { video: 'videos/Дүн.mp4', text: 'Цэг асуулт', correct: false},
+                { video: 'videos/Бичиг бичих.mp4', text: 'Цэг', correct: false},
+                { video: 'videos/Сурагч.mp4', text: 'Цэг', correct: true}
+              ]
+            }
+          }
+        ]
+      },
+      {
+        id: 'work',
+        title: 'Ажил',
+        icon: '💼',
+        lessons: [
+          {
+            id: 'work-1',
+            title: 'Зарах, Худалдан борлуулах',
+            emoji: '💼',
+            video: 'videos/Зарах.mp4',
+            description: 'Зарах, Худалдан борлуулах',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: 'Бараа, үйлчилгээнийхээ оронд мөнгө авч өгч буй үйлдэл.',
+              steps: [
+                'Гараа урд талдаа байрлуулна',
+                'Хуруугаа бага зэрэг хөдөлгөж',
+                'Нүүрэн дээр ажил хийх илэрхийлэл гаргана'
+              ],
+              video: 'videos/Зарах.mp4' 
+            },
+            quiz: {
+              question: '"Зарах, Худалдан борлуулах" дохио аль нь вэ?',
+              options: [
+                { video: 'videos/Захирал.mp4', text: 'Цамц', correct: false},
+                { video: 'videos/Зарах.mp4', text: 'Футболк', correct: true},
+                { video: 'videos/Амралт.mp4', text: 'Жинс', correct: false},
+                { video: 'videos/Хөрөнгө оруулах.mp4', text: 'Жинс', correct: false}
+              ]
+            }
+          },
+          {
+            id: 'work-2',
+            title: 'Ажлаас халах, чөлөөлөх',
+            emoji: '⏰',
+            video: 'videos/Ажилаас халах, чөлөөлөх.mp4',
+            description: 'Ажлаас халах, чөлөөлөх',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: 'Хүнийг ажил үүргээс нь гаргах, зогсоох шийдвэр.',
+              steps: [
+                'Гараа урд талдаа байрлуулна',
+                'Хуруугаа бага зэрэг хөдөлгөж',
+                'Нүүрэн дээр цаг асуух илэрхийлэл гаргана'
+              ],
+              video: 'videos/Ажилаас халах, чөлөөлөх.mp4'
+            },
+            quiz: {
+              question: '"Ажлаас халах, чөлөөлөх" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Хөрөнгө оруулах.mp4', text: 'Цагны', correct: false},
+                { video: 'videos/Зарах.mp4', text: 'Цагны', correct: false},
+                { video: 'videos/Ажилаас халах, чөлөөлөх.mp4', text: 'Секундомер', correct: true},
+                { video: 'videos/Амралт.mp4', text: 'Таймер', correct: false}
+              ]
+            }
+          },
+          {
+            id: 'work-3',
+            title: 'Хөрөнгө оруулах',
+            emoji: '🤝',
+            video: 'videos/Хөрөнгө оруулах.mp4',
+            description: 'Хөрөнгө оруулах',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: 'Мөнгө, эд зүйлээ ашиг олох зорилгоор бизнес, төсөлд гаргах үйлдэл.',
+              steps: [
+                'Гараа урд талдаа байрлуулна',
+                'Хуруугаа бага зэрэг хөдөлгөж',
+                'Нүүрэн дээр уулзалт хийх илэрхийлэл гаргана'
+              ],
+              video: 'videos/Хөрөнгө оруулах.mp4' 
+            },
+            quiz: {
+              question: '"Хөрөнгө оруулах" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Захирал.mp4', text: 'Баярлалаа', correct: false},
+                { video: 'videos/Зарах.mp4', text: 'Зүгээр үү', correct: false},
+                { video: 'videos/Амралт.mp4', text: 'Баяр хүргэе', correct: false},
+                { video: 'videos/Хөрөнгө оруулах.mp4', text: 'Баяр хүргэе', correct: true}
+              ]
+            }
+          },
+          {
+            id: 'work-4',
+            title: 'Захирал',
+            emoji: '📋',
+            video: 'videos/Захирал.mp4',
+            description: 'Захирал',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: 'Байгууллагын удирдлагыг хариуцдаг тэргүүн хүн.',
+              steps: [
+                'Гараа урд талдаа байрлуулна',
+                'Хуруугаа бага зэрэг хөдөлгөж',
+                'Нүүрэн дээр төсөл хийх илэрхийлэл гаргана'
+              ],
+              video: 'videos/Захирал.mp4'
+            },
+            quiz: {
+              question: '"Захирал" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Ажилаас халах, чөлөөлөх.mp4', text: 'Файл', correct: false},
+                { video: 'videos/Зарах.mp4', text: 'Файлын хайрцаг', correct: false},
+                { video: 'videos/Захирал.mp4', text: 'Календар', correct: true},
+                { video: 'videos/Хөрөнгө оруулах.mp4', text: 'Календар', correct: false}
+              ]
+            }
+          },
+          {
+            id: 'work-5',
+            title: 'Амралт',
+            emoji: '🏖️',
+            video: 'videos/Амралт.mp4',
+            description: 'Амралт авах үг',
+            completed: false,
+            exercises: 5,
+            level: 'Дунд',
+            content: {
+              instruction: '"Амралт" гэдэг нь амралт авах үг юм. Үүнийг хийхийн тулд:',
+              steps: [
+                'Гараа урд талдаа байрлуулна',
+                'Хуруугаа бага зэрэг хөдөлгөж',
+                'Нүүрэн дээр амралт авах илэрхийлэл гаргана'
+              ],
+              video: 'videos/Амралт.mp4' 
+            },
+            quiz: {
+              question: '"Амралт" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Захирал.mp4', text: 'Пальм', correct: false},
+                { video: 'videos/Амралт.mp4', text: 'Далай', correct: true},
+                { video: 'videos/Зарах.mp4', text: 'Нар', correct: false},
+                { video: 'videos/Хөрөнгө оруулах.mp4', text: 'Нар', correct: false}
+              ]
+            }
+          }
+        ]
+      },
+      {
+        id: 'emotions',
+        title: 'Сэтгэл хөдлөл',
+        icon: '😊',
+        lessons: [
+          {
+            id: 'emotions-1',
+            title: 'Талархах',
+            emoji: '😊',
+            video: 'videos/Талархах.mp4',
+            description: 'Талархах',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: 'Хүнд тусалсанд, сайхан сэтгэл гаргасанд нь баярласнаа илэрхийлэх үйлдэл.',
+              steps: [
+                'Нүүрэн дээр инээмсэглэл гаргана',
+                'Нүднээ бага зэрэг нарийвчилна',
+                'Гараа бага зэрэг хөдөлгөнө'
+              ],
+              video: 'videos/Талархах.mp4'
+            },
+            quiz: {
+              question: '"Талархах" сэтгэлийг аль нь илэрхийлэх вэ?',
+              options: [
+                { video: 'videos/Талархах.mp4', text: 'Баяртай', correct: true },
+                { video: 'videos/Гомдох, туних.mp4', text: 'Уйтгартай', correct: false },
+                { video: 'videos/Уйдах.mp4', text: 'Айултай', correct: false },
+                { video: 'videos/Хөгжилтэй.mp4', text: 'Найдвартай', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'emotions-2',
+            title: 'Гомдох, туних',
+            emoji: '😔',
+            video: 'videos/Гомдох, туних.mp4',
+            description: 'Гомдох, туних',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: 'Хэн нэгний үг, үйлдлээс болж сэтгэлээр унах, дотроо гомдолтой байх мэдрэмж.',
+              steps: [
+                'Нүүрэн дээр уйтгартай илэрхийлэл гаргана',
+                'Мөрөө бага зэрэг нугална',
+                'Гараа доош чиглүүлнэ'
+              ],
+              video: 'videos/Гомдох, туних.mp4'
+            },
+            quiz: {
+              question: '"Гомдох, туних" сэтгэлийг аль нь илэрхийлэх вэ?',
+              options: [
+                { video: 'videos/Уйдах.mp4', text: 'Баяртай', correct: false },
+                { video: 'videos/Гомдох, туних.mp4', text: 'Уйтгартай', correct: true },
+                { video: 'videos/Хөгжилтэй.mp4', text: 'Айултай', correct: false },
+                { video: 'videos/Талархах.mp4', text: 'Найдвартай', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'emotions-3',
+            title: 'Уурлах',
+            emoji: '😨',
+            video: 'videos/Уурлах.mp4',
+            description: 'Уурлах',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: 'Буруу зүйл, гомдмоор үйлдэлд дургүйцэх, бухимдах мэдрэмж.',
+              steps: [
+                'Нүүрэн дээр айултай илэрхийлэл гаргана',
+                'Гараа цээжэн дээрээ байрлуулна',
+                'Нүднээ томоор ангайна'
+              ],
+              video: 'videos/ayultai.mp4'
+            },
+            quiz: {
+              question: '"Уурлах" сэтгэлийг аль нь илэрхийлэх вэ?',
+              options: [
+                { video: 'videos/Гомдох, туних.mp4', text: 'Баяртай', correct: false },
+                { video: 'videos/Уурлах.mp4', text: 'Айултай', correct: true },
+                { video: 'videos/Уйдах.mp4', text: 'Уйтгартай', correct: false },
+                { video: 'videos/Талархах.mp4', text: 'Найдвартай', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'emotions-4',
+            title: 'Уйдах',
+            emoji: '😌',
+            video: 'videos/Уйдах.mp4',
+            description: 'Уйдах',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: 'Сонирхолгүй, хийх зүйлгүй үед залхах, сонирхол буурах мэдрэмж.',
+              steps: [
+                'Нүүрэн дээр тайвшрал илэрхийлнэ',
+                'Гараа бага зэрэг хөдөлгөнө',
+                'Нүднээ бага зэрэг нарийвчилна'
+              ],
+              video: 'videos/Уйдах.mp4'
+            },
+            quiz: {
+              question: '"Уйдах" сэтгэлийг аль нь илэрхийлэх вэ?',
+              options: [
+                { video: 'videos/Хөгжилтэй.mp4', text: 'Баяртай', correct: false },
+                { video: 'videos/Уурлах.mp4', text: 'Уйтгартай', correct: false },
+                { video: 'videos/Талархах.mp4', text: 'Айултай', correct: false },
+                { video: 'videos/Уйдах.mp4', text: 'Найдвартай', correct: true }
+              ]
+            }
+          },
+          {
+            id: 'emotions-5',
+            title: 'Хөгжилтэй',
+            emoji: '😄',
+            video: 'videos/Хөгжилтэй.mp4',
+            description: 'Хөгжөөнтэй сэтгэл илэрхийлэх',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: 'Баяр хөөртэй, инээдтэй, сэтгэл хөдөлгөсөн, хөгжилтэй мэдрэмжийг илэрхийлэх.',
+              steps: [
+                'Нүүрэн дээр хөгжөөнтэй илэрхийлэл гаргана',
+                'Гараа бага зэрэг хөдөлгөнө',
+                'Нүднээ бага зэрэг нарийвчилна'
+              ],
+              video: 'videos/Хөгжилтэй.mp4'
+            },
+            quiz: {
+              question: '"Хөгжилтэй" сэтгэлийг аль нь илэрхийлэх вэ?',
+              options: [
+                { video: 'videos/Хөгжилтэй.mp4', text: 'Хөгжөөнтэй', correct: true },
+                { video: 'videos/Уурлах.mp4', text: 'Баяртай', correct: false },
+                { video: 'videos/Уйдах.mp4', text: 'Уйтгартай', correct: false },
+                { video: 'videos/Гомдох.mp4', text: 'Айултай', correct: false }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        id: 'time',
+        title: 'Цаг хугацаа',
+        icon: '⏰',
+        lessons: [
+          {
+            id: 'time-1',
+            title: 'Өнөөдөр',
+            emoji: '📅',
+            video: 'videos/Өнөөдөр.mp4',
+            description: 'Өнөөдрийн огноо',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: '"Өнөөдөр" гэдэг нь өнөөдрийн огноо юм. Үүнийг хийхийн тулд:',
+              steps: [
+                'Гараа урд талдаа байрлуулна',
+                'Хуруугаа бага зэрэг хөдөлгөж',
+                'Нүүрэн дээр өнөөдөр илэрхийлнэ'
+              ],
+              video: 'videos/Өнөөдөр.mp4'
+            },
+            quiz: {
+              question: '"Өнөөдөр" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Өнөөдөр.mp4', text: 'Өнөөдөр', correct: true },
+                { video: 'videos/Ирээдүй.mp4', text: 'Маргаш', correct: false },
+                { video: 'videos/Өдөр.mp4', text: 'Өрсөгөөр', correct: false },
+                { video: 'videos/Өглөө.mp4', text: 'Одоо', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'time-2',
+            title: 'Ирээдүй',
+            emoji: '📅',
+            video: 'videos/Ирээдүй.mp4',
+            description: 'Ирээдүй',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: '"Ирээдүй"',
+              steps: [
+                'Гараа урд талдаа байрлуулна',
+                'Хуруугаа бага зэрэг хөдөлгөж',
+                'Нүүрэн дээр маргаш илэрхийлнэ'
+              ],
+              video: 'videos/Ирээдүй.mp4'
+            },
+            quiz: {
+              question: '"Ирээдүй" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Орой.mp4', text: 'Өнөөдөр', correct: false },
+                { video: 'videos/Ирээдүй.mp4', text: 'Маргаш', correct: true },
+                { video: 'videos/Өдөр.mp4', text: 'Өрсөгөөр', correct: false },
+                { video: 'videos/Өглөө.mp4', text: 'Одоо', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'time-3',
+            title: 'Өглөө',
+            emoji: '📅',
+            video: 'videos/Өглөө.mp4',
+            description: 'Өглөө',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: 'Нойрноос сэрээд, өдрийн эхний хэсэг буюу цагийн тодорхой хэсэг.',
+              steps: [
+                'Гараа урд талдаа байрлуулна',
+                'Хуруугаа бага зэрэг хөдөлгөж',
+                'Нүүрэн дээр өрсөгөөр илэрхийлнэ'
+              ],
+              video: 'videos/Өглөө.mp4'
+            },
+            quiz: {
+              question: '"Өглөө" дохио аль нь вэ?',
+              options: [
+                { video: 'videos/Өнөөдөр.mp4', text: 'Өнөөдөр', correct: false },
+                { video: 'videos/Орой.mp4', text: 'Маргаш', correct: false },
+                { video: 'videos/Өглөө.mp4', text: 'Өрсөгөөр', correct: true },
+                { video: 'videos/Ирээдүй.mp4', text: 'Одоо', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'time-4',
+            title: 'Өдөр',
+            emoji: '⏰',
+            video: 'videos/Өдөр.mp4',
+            description: 'Өдөр',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: 'Өглөөний эцсээс оройн хооронд үргэлжилдэг цагийн хэсэг.',
+              steps: [
+                'Гараа урд талдаа байрлуулна',
+                'Хуруугаа бага зэрэг хөдөлгөж',
+                'Нүүрэн дээр одоо илэрхийлнэ'
+              ],
+              video: 'videos/Өдөр.mp4'
+            },
+            quiz: {
+              question: '"Өдөр" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Өглөө.mp4', text: 'Өнөөдөр', correct: false },
+                { video: 'videos/Өнөөдөр.mp4', text: 'Маргаш', correct: false },
+                { video: 'videos/Орой.mp4', text: 'Өрсөгөөр', correct: false },
+                { video: 'videos/Өдөр.mp4', text: 'Одоо', correct: true }
+              ]
+            }
+          },
+          {
+            id: 'time-5',
+            title: 'Орой',
+            emoji: '⏱️',
+            video: 'videos/Орой.mp4',
+            description: 'Орой',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: 'Өдөр дуусаж, шөнө болохоос өмнөх цагийн хэсэг.',
+              steps: [
+                'Гараа урд талдаа байрлуулна',
+                'Хуруугаа бага зэрэг хөдөлгөж',
+                'Нүүрэн дээр удахгүй илэрхийлнэ'
+              ],
+              video: 'videos/Орой.mp4'
+            },
+            quiz: {
+              question: '"Орой" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Орой.mp4', text: 'Удахгүй', correct: true },
+                { video: 'videos/Ирээдүй.mp4', text: 'Өнөөдөр', correct: false },
+                { video: 'videos/Өнөөдөр.mp4', text: 'Маргаш', correct: false },
+                { video: 'videos/Өдөр.mp4', text: 'Өрсөгөөр', correct: false }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        id: 'environment',
+        title: 'Амьдрах орчин',
+        icon: '🌍',
+        lessons: [
+          {
+            id: 'environment-1',
+            title: 'Шүдээ угаах',
+            emoji: '🌿',
+            video: 'videos/Шүдээ угаах.mp4',
+            description: 'Шүдээ угаах',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: 'Шүдний будаг, бохирдол, савны үлдэгдлийг арилгахын тулд шүдний сойз ашиглан шүдээ цэвэрлэх үйлдэл.',
+              steps: [
+                'Гараа урд талдаа байрлуулна',
+                'Хуруугаа бага зэрэг хөдөлгөж',
+                'Нүүрэн дээр байгаль илэрхийлнэ'
+              ],
+              video: 'videos/Шүдээ угаах.mp4'
+            },
+            quiz: {
+              question: '"Шүдээ угаах" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Шүдээ угаах.mp4', text: 'Байгаль', correct: true },
+                { video: 'videos/Зурагт.mp4', text: 'Хороолол', correct: false },
+                { video: 'videos/Индүүдэх.mp4', text: 'Цагаан', correct: false },
+                { video: 'videos/Нүүр угаах.mp4', text: 'Хар', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'environment-2',
+            title: 'Нүүр угаах',
+            emoji: '🏘️',
+            video: 'videos/Нүүр угаах.mp4',
+            description: 'Нүүр угаах',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: 'Нүүрний арьсыг цэвэрлэх, бохирдол, тос, тоос зэрэгийг арилгахын тулд ус болон гоо сайхны бүтээгдэхүүн ашиглан угаах үйлдэл.',
+              steps: [
+                'Гараа урд талдаа байрлуулна',
+                'Хуруугаа бага зэрэг хөдөлгөж',
+                'Нүүрэн дээр хороолол илэрхийлнэ'
+              ],
+              video: 'videos/Нүүр угаах.mp4'
+            },
+            quiz: {
+              question: '"Нүүр угаах" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Ногоо арилгах.mp4', text: 'Байгаль', correct: false },
+                { video: 'videos/Нүүр угаах.mp4', text: 'Хороолол', correct: true },
+                { video: 'videos/Шүдээ угаах.mp4', text: 'Цагаан', correct: false },
+                { video: 'videos/Зурагт.mp4', text: 'Хар', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'environment-3',
+            title: 'Ногоо арилгах',
+            emoji: '⚪',
+            video: 'videos/Ногоо арилгах.mp4',
+            description: 'Ногоо арилгах',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: 'Ногооны бохирдол, тоос шороо, хальс болон бусад зүйлсийг арьсыг нь хуулах эсвэл цэвэрлэх үйлдэл.',
+              steps: [
+                'Гараа урд талдаа байрлуулна',
+                'Хуруугаа бага зэрэг хөдөлгөж',
+                'Нүүрэн дээр цагаан илэрхийлнэ'
+              ],
+              video: 'videos/Ногоо арилгах.mp4'
+            },
+            quiz: {
+              question: '"Ногоо арилгах" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Индүүдэх.mp4', text: 'Байгаль', correct: false },
+                { video: 'videos/Нүүрээ угаах.mp4', text: 'Хороолол', correct: false },
+                { video: 'videos/Ногоо арилгах.mp4', text: 'Цагаан', correct: true },
+                { video: 'videos/Шүдээ угаах.mp4', text: 'Хар', correct: false }
+              ]
+            }
+          },
+          {
+            id: 'environment-4',
+            title: 'Индүүдэх',
+            emoji: '⚫',
+            video: 'videos/Индүүдэх.mp4',
+            description: 'Индүүдэх',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: 'Хувцасны үсрэх wrinkles буюу нугалаа арилгахын тулд индукцийн температур ашиглан хувцсыг галаар халааж, индүү хийж цэвэрлэх үйлдэл.',
+              steps: [
+                'Гараа урд талдаа байрлуулна',
+                'Хуруугаа бага зэрэг хөдөлгөж',
+                'Нүүрэн дээр хар илэрхийлнэ'
+              ],
+              video: 'videos/Индүүдэх.mp4'
+            },
+            quiz: {
+              question: '"Индүүдэх" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Зурагт.mp4', text: 'Байгаль', correct: false },
+                { video: 'videos/Шүдээ угаах.mp4', text: 'Хороолол', correct: false },
+                { video: 'videos/Ногоо арилгах.mp4', text: 'Цагаан', correct: false },
+                { video: 'videos/Индүүдэх.mp4', text: 'Хар', correct: true }
+              ]
+            }
+          },
+          {
+            id: 'environment-5',
+            title: 'Зурагт',
+            emoji: '❄️',
+            video: 'videos/Зурагт.mp4',
+            description: 'Зурагт',
+            completed: false,
+            exercises: 5,
+            level: 'Энгийн',
+            content: {
+              instruction: 'Видео, зураг, аудио үзэхэд ашигладаг, дэлгэцтэй электрон төхөөрөмж.',
+              steps: [
+                'Гараа урд талдаа байрлуулна',
+                'Хуруугаа бага зэрэг хөдөлгөж',
+                'Нүүрэн дээр хүйтэн илэрхийлнэ'
+              ],
+              video: 'videos/Зурагт.mp4'
+            },
+            quiz: {
+              question: '"Зурагт" дохиог аль нь вэ?',
+              options: [
+                { video: 'videos/Зурагт.mp4', text: 'Хүйтэн', correct: true },
+                { video: 'videos/Индүүдэх.mp4', text: 'Байгаль', correct: false },
+                { video: 'videos/Ногоо арилгах.mp4', text: 'Хороолол', correct: false },
+                { video: 'videos/Нүүрээ угаах.mp4', text: 'Цагаан', correct: false }
+              ]
+            }
+          }
+        ]
+      }
+    ];
+
+  
+    let currentUser = {
+      xp: 0,
+      completedLessons: [],
+      currentStreak: 0,
+      longestStreak: 0
+    };
+
+    let currentCategory = null;
+    let currentLesson = null;
+
+    
+    const lessonModal = document.getElementById('lessonModal');
+    const quizModal = document.getElementById('quizModal');
+    const closeModal = document.getElementById('closeModal');
+    const closeQuiz = document.getElementById('closeQuiz');
+    const xpPopup = document.getElementById('xpPopup');
+    const lessonsGrid = document.getElementById('lessonsGrid');
+    const lessonModalTitle = document.getElementById('lessonModalTitle');
+    const lessonModalContent = document.getElementById('lessonModalContent');
+    const quizModalContent = document.getElementById('quizModalContent');
+
+    // Initialize the app
+    document.addEventListener('DOMContentLoaded', () => {
+      setupEventListeners();
+      loadLessonsPage();
+      updateAchievements();
+      
+      // Scroll to categories when clicking scroll down
+      document.querySelector('.scroll-down').addEventListener('click', () => {
+        document.getElementById('categories').scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+      
+      // Load view all click
+      document.querySelectorAll('.view-all').forEach(el => {
+        el.addEventListener('click', () => {
+          switchToPage('lessons-page');
+        });
+      });
+    });
+
+    // Event Listeners
+    function setupEventListeners() {
+      // Navigation items
+      document.querySelectorAll('.nav-item').forEach((item, index) => {
+        item.addEventListener('click', () => {
+          // Stop any media when navigating away from games page
+          if (document.getElementById('games-page').classList.contains('active')) {
+            stopAllMedia();
+            if (questionTimer) {
+              clearInterval(questionTimer);
+            }
+          }
+          
+          // Remove active class from all nav items
+          document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+          // Add active class to clicked item
+          item.classList.add('active');
+          
+          // Switch to appropriate page
+          switch(index) {
+            case 0: // Нүүр
+              switchToPage('home-page');
+              break;
+            case 1: // Хичээл
+              switchToPage('lessons-page');
+              break;
+            case 2: // Тоглоом
+              switchToPage('games-page');
+              loadGamesPage();
+              break;
+            case 3: // Амжилт
+              switchToPage('achievements-page');
+              break;
+          }
+        });
+      });
+
+      // Category cards
+      document.querySelectorAll('.category-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const categoryId = card.dataset.category;
+          loadCategoryLessons(categoryId);
+        });
+      });
+
+      // Modal buttons
+      closeModal.addEventListener('click', () => {
+        lessonModal.classList.remove('active');
+        
+        // Resume background videos when modal is closed
+        const backgroundVideos = document.querySelectorAll('.lesson-image video, .category-card video');
+        backgroundVideos.forEach(video => {
+          video.play();
+        });
+      });
+
+      // Close modal when clicking on overlay
+      lessonModal.addEventListener('click', (e) => {
+        if (e.target === lessonModal) {
+          lessonModal.classList.remove('active');
+          
+          // Resume background videos when modal is closed
+          const backgroundVideos = document.querySelectorAll('.lesson-image video, .category-card video');
+          backgroundVideos.forEach(video => {
+            video.play();
+          });
+        }
+      });
+
+      closeQuiz.addEventListener('click', () => {
+        quizModal.classList.remove('active');
+      });
+
+      // Quiz options (delegated event)
+      document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('quiz-option') || 
+            e.target.closest('.quiz-option')) {
+          const option = e.target.classList.contains('quiz-option') ? 
+            e.target : e.target.closest('.quiz-option');
+          handleQuizAnswer(option);
+        }
+        
+        if (e.target.classList.contains('start-lesson')) {
+          startQuiz();
+        }
+      });
+
+      // Quiz next button
+      document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('quiz-next')) {
+          completeLesson();
+        }
+      });
+    }
+
+    // Switch between pages
+    function switchToPage(pageId) {
+      // Hide all page sections
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Show selected page
+      document.getElementById(pageId).classList.add('active');
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+
+    // Load lessons page content
+    function loadLessonsPage() {
+      const categoriesContainer = document.getElementById('lessonsPageCategories');
+      const allLessonsGrid = document.getElementById('allLessonsGrid');
+      
+      // Calculate total lessons count
+      const totalLessons = categories.reduce((total, category) => total + category.lessons.length, 0);
+      
+      // Load categories with "All Lessons" option
+      categoriesContainer.innerHTML = `
+        <div class="category-card" data-category="all">
+          <div class="category-icon">📚</div>
+          <div class="category-title">Бүх хичээлүүд</div>
+          <div class="category-count">${totalLessons} хичээл</div>
+        </div>
+        ${categories.map(category => `
+          <div class="category-card" data-category="${category.id}">
+            <div class="category-icon">${category.icon}</div>
+            <div class="category-title">${category.title}</div>
+            <div class="category-count">${category.lessons.length} хичээл</div>
+          </div>
+        `).join('')}
+      `;
+      
+      // Load all lessons by default
+      loadAllLessons();
+      
+      // Add event listeners for category cards on lessons page
+      categoriesContainer.querySelectorAll('.category-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const categoryId = card.dataset.category;
+          if (categoryId === 'all') {
+            loadAllLessons();
+          } else {
+            loadCategoryLessons(categoryId);
+          }
+        });
+      });
+    }
+
+    // Load all lessons
+    function loadAllLessons() {
+      const allLessonsGrid = document.getElementById('allLessonsGrid');
+      
+      // Clear previous lessons
+      allLessonsGrid.innerHTML = '';
+      
+      // Load all lessons from all categories
+      categories.forEach(category => {
+        category.lessons.forEach(lesson => {
+          const completed = currentUser.completedLessons.includes(lesson.id);
+          
+          const lessonCard = document.createElement('div');
+          lessonCard.className = `lesson-card ${completed ? 'completed' : ''}`;
+          lessonCard.innerHTML = `
+            <div class="lesson-image">
+              <video autoplay muted loop playsinline>
+                <source src="${lesson.video}" type="video/mp4">
+                ${lesson.emoji}
+              </video>
+            </div>
+            ${completed ? '<div class="completed-badge">Дуусгасан</div>' : ''}
+            <div class="lesson-info">
+              <div class="lesson-title">${lesson.title}</div>
+              <div class="lesson-desc">${lesson.description}</div>
+              <div class="lesson-meta">
+                <span>${lesson.exercises} дасгал</span>
+                <span class="lesson-level">${lesson.level}</span>
+              </div>
+            </div>
+          `;
+          
+          lessonCard.addEventListener('click', () => openLessonModal(lesson));
+          allLessonsGrid.appendChild(lessonCard);
+        });
+      });
+
+      // Add custom lessons if they exist
+      if (window.customLessons) {
+        window.customLessons.forEach(lesson => {
+          const completed = currentUser.completedLessons.includes(lesson.id);
+          
+          const lessonCard = document.createElement('div');
+          lessonCard.className = `lesson-card ${completed ? 'completed' : ''}`;
+          lessonCard.innerHTML = `
+            <div class="lesson-image">
+              <video autoplay muted loop playsinline>
+                <source src="${lesson.video}" type="video/mp4">
+                ${lesson.emoji}
+              </video>
+            </div>
+            ${completed ? '<div class="completed-badge">Дуусгасан</div>' : ''}
+            <div class="lesson-info">
+              <div class="lesson-title">${lesson.title}</div>
+              <div class="lesson-desc">${lesson.description}</div>
+              <div class="lesson-meta">
+                <span>${lesson.exercises} дасгал</span>
+                <span class="lesson-level">${lesson.level}</span>
+              </div>
+            </div>
+          `;
+          
+          lessonCard.addEventListener('click', () => openLessonModal(lesson));
+          allLessonsGrid.appendChild(lessonCard);
+        });
+      }
+    }
+
+    // Update achievements
+    function updateAchievements() {
+      const completedCount = currentUser.completedLessons.length;
+      
+      // Calculate game statistics
+      let totalGameCorrect = 0;
+      let totalGameAttempts = 0;
+      let totalGameScore = 0;
+      
+      if (currentUser.completedGames) {
+        Object.values(currentUser.completedGames).forEach(gameResults => {
+          gameResults.forEach(result => {
+            totalGameCorrect += result.correct;
+            totalGameAttempts += result.total;
+            totalGameScore += result.correct * 10; // 10 XP per correct answer
+          });
+        });
+      }
+      
+      // Update achievement progress
+      const achievements = [
+        { target: 1, current: Math.min(completedCount, 1) },
+        { target: 3, current: Math.min(currentUser.currentStreak, 3) },
+        { target: 10, current: Math.min(completedCount, 10) },
+        { target: 25, current: Math.min(completedCount, 25) }
+      ];
+      
+      const achievementFills = document.querySelectorAll('.achievement-fill');
+      const achievementSpans = document.querySelectorAll('.achievement-progress span');
+      
+      achievements.forEach((achievement, index) => {
+        const percentage = (achievement.current / achievement.target) * 100;
+        achievementFills[index].style.width = `${percentage}%`;
+        achievementSpans[index].textContent = `${achievement.current}/${achievement.target}`;
+      });
+      
+      // Calculate overall accuracy (lessons + games)
+      const totalCorrect = completedCount + totalGameCorrect;
+      const totalAttempts = completedCount + totalGameAttempts;
+      const overallAccuracy = totalAttempts > 0 ? Math.round((totalCorrect / totalAttempts) * 100) : 0;
+      
+      // Update stats
+      document.querySelectorAll('.stat-value')[0].textContent = currentUser.currentStreak;
+      document.querySelectorAll('.stat-value')[1].textContent = currentUser.longestStreak;
+      document.querySelectorAll('.stat-value')[2].textContent = currentUser.xp + totalGameScore; // Total XP including game scores
+      document.querySelectorAll('.stat-value')[3].textContent = overallAccuracy + '%'; // Overall accuracy percentage
+    }
+
+    // Load category lessons
+    function loadCategoryLessons(categoryId) {
+      currentCategory = categories.find(c => c.id === categoryId);
+      
+      // Check if we're on the lessons page or home page
+      const isOnLessonsPage = document.getElementById('lessons-page').classList.contains('active');
+      const targetGrid = isOnLessonsPage ? document.getElementById('allLessonsGrid') : lessonsGrid;
+      
+      // Update UI - only scroll if on home page
+      if (!isOnLessonsPage) {
+        document.getElementById('categories').scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+      
+      // Clear previous lessons
+      targetGrid.innerHTML = '';
+      
+      // Add new lessons
+      currentCategory.lessons.forEach(lesson => {
+        const completed = currentUser.completedLessons.includes(lesson.id);
+        
+        const lessonCard = document.createElement('div');
+        lessonCard.className = `lesson-card ${completed ? 'completed' : ''}`;
+        lessonCard.innerHTML = `
+          <div class="lesson-image">
+            <video autoplay muted loop playsinline>
+              <source src="${lesson.video}" type="video/mp4">
+              ${lesson.emoji}
+            </video>
+          </div>
+          ${completed ? '<div class="completed-badge">Дуусгасан</div>' : ''}
+          <div class="lesson-info">
+            <div class="lesson-title">${lesson.title}</div>
+            <div class="lesson-desc">${lesson.description}</div>
+            <div class="lesson-meta">
+              <span>${lesson.exercises} дасгал</span>
+              <span class="lesson-level">${lesson.level}</span>
+            </div>
+          </div>
+        `;
+        
+        lessonCard.addEventListener('click', () => openLessonModal(lesson));
+        targetGrid.appendChild(lessonCard);
+      });
+    }
+
+    // Open lesson modal
+    function openLessonModal(lesson) {
+      currentLesson = lesson;
+      
+      // Stop all background videos before opening modal
+      const backgroundVideos = document.querySelectorAll('.lesson-image video, .category-card video');
+      backgroundVideos.forEach(video => {
+        video.pause();
+      });
+      
+      lessonModalTitle.textContent = lesson.title;
+      
+      lessonModalContent.innerHTML = `
+        <div class="lesson-modal-image">
+          <video autoplay muted loop playsinline>
+            <source src="${lesson.content.video}" type="video/mp4">
+            ${lesson.emoji}
+          </video>
+        </div>
+        <div class="lesson-modal-desc">
+          <p>${lesson.content.instruction}</p>
+          <ol>
+            ${lesson.content.steps.map(step => `<li>${step}</li>`).join('')}
+          </ol>
+        </div>
+        <div class="modal-actions">
+          <button class="modal-button primary start-lesson">
+            <i class="fas fa-play"></i> Шалгалт өгөх
+          </button>
+        </div>
+      `;
+      
+      lessonModal.classList.add('active');
+    }
+
+    // Start quiz
+    function startQuiz() {
+      lessonModal.classList.remove('active');
+      
+      quizModalContent.innerHTML = `
+        <div class="quiz-question">${currentLesson.quiz.question}</div>
+        <div class="quiz-options">
+          ${currentLesson.quiz.options.map(option => `
+            <div class="quiz-option" data-correct="${option.correct}">
+              <div class="quiz-option-image">
+                <video autoplay muted loop playsinline>
+                  <source src="${option.video}" type="video/mp4">
+                  ${option.text}
+                </video>
+              </div>
+              <div class="quiz-option-text">${option.text}</div>
+            </div>
+          `).join('')}
+        </div>
+        <div class="quiz-feedback"></div>
+        <button class="quiz-next">Дуусгах</button>
+      `;
+      
+      quizModal.classList.add('active');
+    }
+
+    // Handle quiz answer
+    function handleQuizAnswer(selectedOption) {
+      if (selectedOption.classList.contains('correct') || 
+          selectedOption.classList.contains('incorrect')) {
+        return; // Already answered
+      }
+      
+      const isCorrect = selectedOption.dataset.correct === "true";
+      const options = document.querySelectorAll('.quiz-option');
+      
+      // Disable all options
+      options.forEach(option => {
+        option.style.pointerEvents = 'none';
+        
+        if (option.dataset.correct === "true") {
+          option.classList.add('correct');
+        } else if (option === selectedOption && !isCorrect) {
+          option.classList.add('incorrect');
+        }
+      });
+      
+      // Show feedback
+      const feedback = document.querySelector('.quiz-feedback');
+      feedback.textContent = isCorrect ? 'Зөв хариуллаа! 🎉' : 'Буруу хариуллаа 😕';
+      feedback.className = `quiz-feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+      
+      // Show next button
+      document.querySelector('.quiz-next').style.display = 'block';
+      
+      // Add XP if correct
+      if (isCorrect) {
+        showXPPopup(10);
+      }
+    }
+
+    // Complete lesson
+    function completeLesson() {
+      if (!currentUser.completedLessons.includes(currentLesson.id)) {
+        currentUser.completedLessons.push(currentLesson.id);
+        updateXP(20);
+        updateAchievements();
+      }
+      
+      quizModal.classList.remove('active');
+      loadCategoryLessons(currentCategory.id);
+    }
+
+    // Show XP popup
+    function showXPPopup(amount) {
+      xpPopup.textContent = `+${amount} XP!`;
+      xpPopup.classList.add('show');
+      
+      setTimeout(() => {
+        xpPopup.classList.remove('show');
+      }, 1500);
+    }
+
+    // Update XP
+    function updateXP(amount) {
+      currentUser.xp += amount;
+      document.querySelector('.xp-display').textContent = `${currentUser.xp} XP`;
+      
+      // Update progress bar (simple version)
+      const progressPercent = Math.min(100, (currentUser.xp / 100) * 100);
+      document.querySelector('.progress-bar').style.width = `${progressPercent}%`;
+      
+      // Update progress text
+      const xpNeeded = Math.max(0, 100 - currentUser.xp);
+      document.querySelector('.progress-details span:last-child').textContent = 
+        `Дараагийн түвшин хүртэл ${xpNeeded} XP`;
+      
+      // Update completed count
+      const completedCount = currentUser.completedLessons.length;
+      document.querySelector('.progress-details span:first-child').textContent = 
+        `${completedCount} хичээл дуусгасан`;
+    }
+
+    // Load games page
+    function loadGamesPage() {
+      const gamesPageCategories = document.getElementById('gamesPageCategories');
+      gamesPageCategories.innerHTML = '';
+      
+      // Filter out the "Бүх хичээлүүд" category and create game categories
+      const gameCategories = categories.filter(category => category.id !== 'all');
+      
+      gameCategories.forEach(category => {
+        const categoryCard = document.createElement('div');
+        categoryCard.className = 'category-card';
+        categoryCard.dataset.category = category.id;
+        
+        categoryCard.innerHTML = `
+          <div class="category-icon">${category.icon}</div>
+          <div class="category-title">${category.title}</div>
+          <div class="category-count">Тоглоом</div>
+        `;
+        
+        categoryCard.addEventListener('click', () => {
+          loadGame(category);
+        });
+        
+        gamesPageCategories.appendChild(categoryCard);
+      });
+    }
+
+    // Load specific game
+    function loadGame(category) {
+      const gameContainer = document.getElementById('gameContainer');
+      const gameTitle = document.getElementById('gameTitle');
+      const gameContent = document.getElementById('gameContent');
+      const categoriesContainer = document.querySelector('#games-page .categories-container');
+      
+      // Hide categories, show game
+      categoriesContainer.style.display = 'none';
+      gameContainer.style.display = 'block';
+      
+      // Set game title
+      gameTitle.textContent = `${category.title} - Тоглоом`;
+      
+      // Store selected category for quiz game
+      window.selectedQuizCategory = category;
+      
+      // Load the quiz game content
+      gameContent.innerHTML = `
+        <div class="quiz-game-container">
+          <div class="home-box custom-box" id="quizHomeBox">
+            <h3>Инструкц:</h3>
+            <p>Нийт асуултын тоо: <span class="total-question">5</span></p>
+            <button type="button" class="quiz-btn" onclick="startQuizGame()">Шалгалт эхлүүлэх</button>
+          </div>
+
+          <div class="quiz-box custom-box hide" id="quizBox">
+            <div class="timer" style="text-align: right; font-size: 18px; font-weight: bold; color: var(--red);">
+              Үлдсэн хугацаа: <span id="timer">8</span> сек
+            </div>
+
+            <!-- 🎵 Дуу -->
+            <audio id="bg-music" src="videos/Ay.mp3" loop></audio>
+            
+            <div class="question-number"></div>
+            <div class="question-text"></div>
+            <div class="option-container"></div>
+            <div class="answers-indicator"></div>
+          </div>
+
+          <div class="result-box custom-box hide" id="resultBox">
+            <h1>Шалгалтын үр дүн</h1>
+            <table>
+              <tr><td>Нийт асуулт</td><td><span class="total-question">5</span></td></tr>
+              <tr><td>Оролдсон</td><td><span class="total-attempt">0</span></td></tr>
+              <tr><td>Зөв</td><td><span class="total-correct">0</span></td></tr>
+              <tr><td>Буруу</td><td><span class="total-wrong">0</span></td></tr>
+              <tr><td>Хувь</td><td><span class="Percentage">0%</span></td></tr>
+              <tr><td>Нийт оноо</td><td><span class="total-score">0 / 5</span></td></tr>
+            </table>
+            <button type="button" class="quiz-btn" onclick="restartQuiz()">Дахин оролдох</button>
+            <button type="button" class="quiz-btn" onclick="goHomeFromQuiz()">Нүүр хуудас</button>
+          </div>
+        </div>
+      `;
+      
+      // Initialize quiz game variables
+      initQuizGame();
+    }
+
+    // Back to games list
+    document.getElementById('backToGames').addEventListener('click', () => {
+      const gameContainer = document.getElementById('gameContainer');
+      const categoriesContainer = document.querySelector('#games-page .categories-container');
+      
+      // Hide game, show categories
+      gameContainer.style.display = 'none';
+      categoriesContainer.style.display = 'block';
+      
+      // Stop all audio and video when exiting game
+      stopAllMedia();
+      
+      // Clear any timers
+      if (questionTimer) {
+        clearInterval(questionTimer);
+      }
+    });
+
+    // Function to stop all audio and video
+    function stopAllMedia() {
+      // Stop background music
+      const bgMusic = document.getElementById('bg-music');
+      if (bgMusic) {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+      }
+      
+      // Stop any other audio elements
+      const allAudio = document.querySelectorAll('audio');
+      allAudio.forEach(audio => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+      
+      // Stop any video elements that might have audio
+      const allVideos = document.querySelectorAll('video');
+      allVideos.forEach(video => {
+        video.pause();
+        video.currentTime = 0;
+      });
+    }
+
+    // Quiz Game Variables and Functions
+    let quizShuffled = [];
+    let currentQuestion = 0;
+    let score = 0;
+    let attempt = 0;
+    let correctAnswers = 0;
+    let wrongAnswers = 0;
+    let questionTime = 8;
+    let questionTimer;
+    let quizLessonList = [];
+    let quizAnswerTitles = [];
+    let quizCategoryId = null;
+
+    function initQuizGame() {
+      // Use selected category's lessons for the quiz
+      const cat = window.selectedQuizCategory;
+      quizLessonList = cat && cat.lessons ? cat.lessons.slice(0, 5) : [];
+      quizAnswerTitles = quizLessonList.map(lesson => lesson.title);
+      quizShuffled = shuffleArray([...quizLessonList]);
+      currentQuestion = 0;
+      score = 0;
+      attempt = 0;
+      correctAnswers = 0;
+      wrongAnswers = 0;
+      questionTime = 8;
+      quizCategoryId = cat ? cat.id : null;
+      
+      // Stop any existing audio/video
+      stopAllMedia();
+      
+      // Show home box
+      document.getElementById('quizHomeBox').classList.remove('hide');
+      document.getElementById('quizBox').classList.add('hide');
+      document.getElementById('resultBox').classList.add('hide');
+    }
+
+    function shuffleArray(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function startQuizGame() {
+      // Already shuffled in initQuizGame
+      document.getElementById('quizHomeBox').classList.add('hide');
+      document.getElementById('quizBox').classList.remove('hide');
+      // Try to play background music
+      const bgMusic = document.getElementById('bg-music');
+      if (bgMusic) {
+        bgMusic.play().catch(e => console.log('Audio play failed:', e));
+      }
+      setQuestion();
+    }
+
+    function setQuestion() {
+      resetTimer();
+      const question = quizShuffled[currentQuestion];
+      const questionNumberElement = document.querySelector(".question-number");
+      const questionTextElement = document.querySelector(".question-text");
+      const optionContainer = document.querySelector(".option-container");
+      // Show video as question
+      questionNumberElement.innerHTML = "Асуулт " + (currentQuestion + 1) + " / " + quizShuffled.length;
+      questionTextElement.innerHTML = `<video width='320' height='240' autoplay muted loop playsinline><source src='${question.video}' type='video/mp4'></video>`;
+      optionContainer.innerHTML = "";
+      
+      // Create shuffled answer options with correct answer tracking
+      const shuffledAnswers = shuffleArray([...quizAnswerTitles]);
+      const correctAnswer = question.title;
+      
+      shuffledAnswers.forEach((title, index) => {
+        const optionElement = document.createElement("div");
+        optionElement.innerHTML = title;
+        optionElement.className = "option";
+        optionElement.setAttribute("data-index", index);
+        // Mark correct answer
+        if (title === correctAnswer) {
+          optionElement.setAttribute("data-correct", "true");
+        } else {
+          optionElement.setAttribute("data-correct", "false");
+        }
+        optionElement.onclick = function() { getResult(this); };
+        optionContainer.appendChild(optionElement);
+      });
+      startQuestionTimer();
+    }
+
+    function startQuestionTimer() {
+      questionTime = 8;
+      const timerElement = document.getElementById("timer");
+      timerElement.innerText = questionTime;
+      questionTimer = setInterval(() => {
+        questionTime--;
+        timerElement.innerText = questionTime;
+        if (questionTime <= 0) {
+          clearInterval(questionTimer);
+          showCorrectAnswer();
+          updateAnswersIndicator("wrong");
+          setTimeout(() => {
+            nextQuestion();
+          }, 1000);
+        }
+      }, 1000);
+    }
+
+    function resetTimer() {
+      clearInterval(questionTimer);
+      const timerElement = document.getElementById("timer");
+      if (timerElement) {
+        timerElement.innerText = "8";
+      }
+    }
+
+    function getResult(element) {
+      const selectedTitle = element.innerText;
+      const correctTitle = quizShuffled[currentQuestion].title;
+      attempt++;
+      if (selectedTitle === correctTitle) {
+        element.classList.add("correct");
+        correctAnswers++;
+        updateAnswersIndicator("correct");
+      } else {
+        element.classList.add("wrong");
+        wrongAnswers++;
+        updateAnswersIndicator("wrong");
+        showCorrectAnswer();
+      }
+      disableOptions();
+      clearInterval(questionTimer);
+      // Auto-advance after 1s
+      setTimeout(() => {
+        nextQuestion();
+      }, 1000);
+    }
+
+    function showCorrectAnswer() {
+      const optionContainer = document.querySelector(".option-container");
+      const correctTitle = quizShuffled[currentQuestion].title;
+      for (let i = 0; i < optionContainer.children.length; i++) {
+        if (optionContainer.children[i].innerText === correctTitle) {
+          optionContainer.children[i].classList.add("correct");
+        }
+      }
+    }
+
+    function disableOptions() {
+      const options = document.querySelectorAll('.option-container .option');
+      for (let i = 0; i < options.length; i++) {
+        options[i].classList.add("already-answered");
+        options[i].onclick = null;
+      }
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < quizShuffled.length - 1) {
+        currentQuestion++;
+        setQuestion();
+      } else {
+        quizOver();
+      }
+    }
+
+    function updateAnswersIndicator(markType) {
+      const answersIndicatorContainer = document.querySelector(".answers-indicator");
+      const indicator = document.createElement("div");
+      indicator.className = `answer-indicator ${markType}`;
+      indicator.innerText = markType === "correct" ? "✔" : "✖";
+      answersIndicatorContainer.appendChild(indicator);
+    }
+
+    function quizOver() {
+      document.getElementById('quizBox').classList.add('hide');
+      document.getElementById('resultBox').classList.remove('hide');
+      const totalQuestionElements = document.querySelectorAll('.result-box .total-question');
+      const totalAttemptElements = document.querySelectorAll('.result-box .total-attempt');
+      const totalCorrectElements = document.querySelectorAll('.result-box .total-correct');
+      const totalWrongElements = document.querySelectorAll('.result-box .total-wrong');
+      const percentageElements = document.querySelectorAll('.result-box .Percentage');
+      const totalScoreElements = document.querySelectorAll('.result-box .total-score');
+      totalQuestionElements.forEach(el => el.innerText = quizShuffled.length);
+      totalAttemptElements.forEach(el => el.innerText = attempt);
+      totalCorrectElements.forEach(el => el.innerText = correctAnswers);
+      totalWrongElements.forEach(el => el.innerText = wrongAnswers);
+      const percentage = Math.round((correctAnswers / quizShuffled.length) * 100);
+      percentageElements.forEach(el => el.innerText = percentage + "%");
+      totalScoreElements.forEach(el => el.innerText = correctAnswers + " / " + quizShuffled.length);
+      
+      // Stop background music
+      const bgMusic = document.getElementById('bg-music');
+      if (bgMusic) {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+      }
+      
+      // Record results in Success section (Achievements)
+      // Add XP for correct answers
+      updateXP(correctAnswers * 10);
+      // Optionally, track completed games per category
+      if (!currentUser.completedGames) currentUser.completedGames = {};
+      if (!currentUser.completedGames[quizCategoryId]) currentUser.completedGames[quizCategoryId] = [];
+      currentUser.completedGames[quizCategoryId].push({
+        correct: correctAnswers,
+        total: quizShuffled.length,
+        date: new Date().toISOString()
+      });
+      updateAchievements();
+    }
+
+    function restartQuiz() {
+      initQuizGame();
+    }
+
+    function goHomeFromQuiz() {
+      // Go back to games list
+      const gameContainer = document.getElementById('gameContainer');
+      const categoriesContainer = document.querySelector('#games-page .categories-container');
+      
+      gameContainer.style.display = 'none';
+      categoriesContainer.style.display = 'block';
+      
+      // Stop all audio and video when exiting
+      stopAllMedia();
+      
+      // Clear any timers
+      if (questionTimer) {
+        clearInterval(questionTimer);
+      }
+    }
+
+    // Video Upload Functionality
+    let selectedVideoFile = null;
+
+    // Initialize video upload functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Home page upload
+      const videoUpload = document.getElementById('videoUpload');
+      const selectedFileName = document.getElementById('selectedFileName');
+      const uploadSubmitBtn = document.getElementById('uploadSubmitBtn');
+
+      if (videoUpload) {
+        videoUpload.addEventListener('change', function(e) {
+          handleFileSelection(e, selectedFileName, uploadSubmitBtn);
+        });
+
+        uploadSubmitBtn.addEventListener('click', function() {
+          if (selectedVideoFile) {
+            handleVideoUpload(selectedVideoFile, 'home');
+          }
+        });
+      }
+
+      // Lessons page upload
+      const videoUploadLessons = document.getElementById('videoUploadLessons');
+      const selectedFileNameLessons = document.getElementById('selectedFileNameLessons');
+      const uploadSubmitBtnLessons = document.getElementById('uploadSubmitBtnLessons');
+
+      if (videoUploadLessons) {
+        videoUploadLessons.addEventListener('change', function(e) {
+          handleFileSelection(e, selectedFileNameLessons, uploadSubmitBtnLessons);
+        });
+
+        uploadSubmitBtnLessons.addEventListener('click', function() {
+          if (selectedVideoFile) {
+            handleVideoUpload(selectedVideoFile, 'lessons');
+          }
+        });
+      }
+    });
+
+    // Handle file selection
+    function handleFileSelection(e, fileNameElement, submitBtn) {
+      const file = e.target.files[0];
+      if (file) {
+        // Check if it's a video file
+        if (file.type.startsWith('video/')) {
+          selectedVideoFile = file;
+          
+          // Show file size
+          const fileSize = (file.size / (1024 * 1024)).toFixed(2);
+          fileNameElement.textContent = `${file.name} (${fileSize} MB)`;
+          submitBtn.style.display = 'flex';
+        } else {
+          alert('Зөвхөн видео файл сонгоно уу!');
+          selectedVideoFile = null;
+          fileNameElement.textContent = 'Файл сонгоогүй байна';
+          submitBtn.style.display = 'none';
+        }
+      }
+    }
+
+    // Handle video upload
+    function handleVideoUpload(file, page) {
+      // Create a temporary URL for the video
+      const videoURL = URL.createObjectURL(file);
+      
+      // Create a new lesson object
+      const newLesson = {
+        id: 'custom-' + Date.now(),
+        title: file.name.replace(/\.[^/.]+$/, ""), // Remove file extension
+        emoji: '📹',
+        video: videoURL,
+        description: 'Хэрэглэгчийн нэмсэн видео',
+        completed: false,
+        exercises: 5,
+        level: 'Энгийн',
+        content: {
+          instruction: 'Энэ бол хэрэглэгчийн нэмсэн дохионы хэлний видео юм.',
+          steps: [
+            'Видеог анхааралтай үзнэ үү',
+            'Дохионы хэлний хөдөлгөөнийг сурна уу',
+            'Дасгал хийж үзнэ үү'
+          ],
+          video: videoURL
+        },
+        quiz: {
+          question: 'Энэ дохионы хэлний видео юу вэ?',
+          options: [
+            { video: videoURL, correct: true },
+            { video: 'videos/Сайн уу.mp4', correct: false },
+            { video: 'videos/Баяртай.mp4', correct: false },
+            { video: 'videos/Талархах.mp4', correct: false }
+          ]
+        }
+      };
+
+      // Add to custom lessons array (create if doesn't exist)
+      if (!window.customLessons) {
+        window.customLessons = [];
+      }
+      window.customLessons.push(newLesson);
+
+      // Add to the current category if one is selected
+      if (currentCategory) {
+        currentCategory.lessons.push(newLesson);
+      }
+
+      // Refresh the lessons display
+      if (currentCategory) {
+        loadCategoryLessons(currentCategory.id);
+      } else {
+        loadAllLessons();
+      }
+
+      // Reset upload form based on page
+      if (page === 'home') {
+        document.getElementById('videoUpload').value = '';
+        document.getElementById('selectedFileName').textContent = 'Файл сонгоогүй байна';
+        document.getElementById('uploadSubmitBtn').style.display = 'none';
+      } else if (page === 'lessons') {
+        document.getElementById('videoUploadLessons').value = '';
+        document.getElementById('selectedFileNameLessons').textContent = 'Файл сонгоогүй байна';
+        document.getElementById('uploadSubmitBtnLessons').style.display = 'none';
+      }
+      
+      selectedVideoFile = null;
+
+      // Show success message
+      showUploadSuccess();
+    }
+
+    // Show upload success message
+    function showUploadSuccess() {
+      const xpPopup = document.getElementById('xpPopup');
+      xpPopup.textContent = 'Видео амжилттай нэмэгдлээ! 🎉';
+      xpPopup.classList.add('show');
+      
+      setTimeout(() => {
+        xpPopup.classList.remove('show');
+      }, 2000);
+    }
+
+    
+  </script>
+</body>
+</html>
